@@ -27,6 +27,7 @@ namespace NotenDurchschnitt
             
 
         }
+        string[] listaPrzedmiotow = { "Mathe", "Deutsch", "Englisch", "IT", "Sport", "note Bio", "note Kunst", "note Religion", "note Werken", "note TG", "note Geo", "note Fizyka", "note Musik", "note Francuski", "note cos tam" };
 
         private void ButtonRechneDR_Click(object sender, RoutedEventArgs e)
         {
@@ -61,6 +62,19 @@ namespace NotenDurchschnitt
             TextBlockDurschschitt.Text =  s;
             //Wynik.Text = s;
             //Convert.ToString(durchschnitt);   nie dziala 
+        }
+
+        private void nextPrzedmiotSzkolny_Click(object sender, RoutedEventArgs e)
+        {
+            string[] listaPrzedmiotow = {"Mathe", "Deutsch", "Englisch", "IT", "Sport", "note Bio", "note Kunst", "note Religion", "note Werken", "note TG", "note Geo", "note Fizyka", "note Musik", "note Francuski", "note cos tam" };
+        
+                for(int i = 0; i < listaPrzedmiotow.Length; i++)
+                    {
+
+                        PrzedmiotSzkolny.Text = listaPrzedmiotow[i];
+
+
+                    }
         }
     }
 }

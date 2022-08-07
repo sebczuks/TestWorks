@@ -7,7 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel></StackPanel>
+
+        <StackPanel>
+             <Label FontSize="25" Padding="10"> Wpisz swoje oceny tutaj:</Label>
+             <TextBlock FontSize="20" Name="PrzedmiotSzkolny" Text="Mathe"></TextBlock>
+       
+            <TextBox FontSize="15" Background="AliceBlue" Padding="10" Margin="50,0,700,0"></TextBox>
+            <Button  Name="nextPrzedmiotSzkolny" Padding="10" Margin="50,0,650,0" Click="nextPrzedmiotSzkolny_Click">NEXT>>></Button>
+        </StackPanel>
+
         <Label Content="Twoj Wynik" HorizontalAlignment="Left" Margin="636,367,0,0" VerticalAlignment="Top"/>
         <TextBlock Name="TextBlockDurschschitt" HorizontalAlignment="Left" Margin="723,372,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="62"/>
         <Button Name ="ButtonRechneDR" Content="Button" HorizontalAlignment="Left" Margin="636,337,0,0" VerticalAlignment="Top" Width="149" Click="ButtonRechneDR_Click"/>
