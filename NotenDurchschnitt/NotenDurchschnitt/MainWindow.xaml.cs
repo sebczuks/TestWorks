@@ -27,54 +27,57 @@ namespace NotenDurchschnitt
             
 
         }
-        string[] listaPrzedmiotow = { "Mathe", "Deutsch", "Englisch", "IT", "Sport", "note Bio", "note Kunst", "note Religion", "note Werken", "note TG", "note Geo", "note Fizyka", "note Musik", "note Francuski", "note cos tam" };
 
-        private void ButtonRechneDR_Click(object sender, RoutedEventArgs e)
-        {
-            int noteMathe = 2;
-            int noteDeutsch = 2;
-            int noteEnglish = 1;
-            int noteIT = 3;
-            int noteSport = 1;
-            int noteMusik = 1;
-            int noteGeo = 1;
-            int noteBio = 3;
-            int noteKunst = 2;
-            int noteWerken = 1;
-            int noteTG = 2;
-            int noteReligion = 1;
-
-           // float durchschnitt;
-
-            float notenZahl = 12.00f;
+        
 
 
-            float durchschnitt = 0.00f;
+        
 
+      
+       // static readonly string[] listaPrzedmiotow = { "Mathe", "Deutsch", "Englisch", "IT", "Sport", "note Bio", "note Kunst", "note Religion", "note Werken", "note TG", "note Geo", "note Fizyka", "note Musik", "note Francuski", "note cos tam" };
 
-
-
-
-           durchschnitt = (noteMathe + noteDeutsch + noteEnglish + noteIT + noteBio + noteKunst + noteMusik + noteReligion + noteWerken + noteTG + noteSport +noteGeo ) / notenZahl;
-            string s = durchschnitt.ToString("N4");
-
-
-            TextBlockDurschschitt.Text =  s;
-            //Wynik.Text = s;
-            //Convert.ToString(durchschnitt);   nie dziala 
-        }
+      
 
         private void nextPrzedmiotSzkolny_Click(object sender, RoutedEventArgs e)
         {
-            string[] listaPrzedmiotow = {"Mathe", "Deutsch", "Englisch", "IT", "Sport", "note Bio", "note Kunst", "note Religion", "note Werken", "note TG", "note Geo", "note Fizyka", "note Musik", "note Francuski", "note cos tam" };
-        
-                for(int i = 0; i < listaPrzedmiotow.Length; i++)
-                    {
 
-                        PrzedmiotSzkolny.Text = listaPrzedmiotow[i];
+            float notenZahl = float.Parse(textBoxiloscPrzedmiotow.Text);
+            float durchschnitt = 0.00f;
+
+            int noteMathe = Convert.ToInt32(textBoxMathenote.Text);
+            int noteDeutsch = Convert.ToInt32(textBoxDeutschnote.Text);
+            int noteEnglish = Convert.ToInt32(textBoxEnglischnote.Text);
+            int noteIT = Convert.ToInt32(textBoxITnote.Text);
+            int noteSport = Convert.ToInt32(textBoxSportnote.Text);
+            int noteMusik = Convert.ToInt32(textBoxMusikTnote.Text);
+            int noteGeo = Convert.ToInt32(textBoxGeonote.Text);
+            int noteBio = Convert.ToInt32(textBoxBionote.Text);
+            int noteKunst = Convert.ToInt32(textBoxKunstnote.Text);
+            int noteWerken = Convert.ToInt32(textBoxWerkennote.Text);
+            int noteTG = Convert.ToInt32(textBoxTGnote.Text);
+            int noteReligion = Convert.ToInt32(textBoxReligionnote.Text);
+            int noteFranzösisch = Convert.ToInt32(textBoxFrannote.Text);
+            int noteChemie = Convert.ToInt32(textBoxChemienote.Text);
+            int noteGesichte = Convert.ToInt32(textBoxGeschichtenote.Text);
+            int noteWirtschaft = Convert.ToInt32(textBoxWirtschaftnote.Text);
+            int notePhysik=Convert.ToInt32(textBoxPhysiknote.Text);
+            int notewg = Convert.ToInt32(textBoxWGnote.Text);
+            int noteGPG = Convert.ToInt32(textBoxGPGnote.Text);
+            int noteHSU = Convert.ToInt32(textBoxHSUNaturnote.Text);
+            int noteWuB = Convert.ToInt32(textBoxWuBnote.Text);
 
 
-                    }
+
+
+            //this method will change the label PrzedmiotSzkolny to new and will be adding the Notes 
+            // listaPrzedmiotow = {"Mathe", "Deutsch", "Englisch", "IT", "Sport", "note Bio", "note Kunst", "note Religion", "note Werken", "note TG", "note Geo", "note Fizyka", "note Musik", "note Francuski", "note cos tam" };
+            durchschnitt = (noteWuB + noteMathe + noteDeutsch + noteSport + noteEnglish + noteIT + noteMusik + noteGeo + noteGeo + notewg + noteGPG + noteBio + noteHSU +noteKunst + noteWerken + noteTG + noteReligion + noteFranzösisch +noteChemie + noteGesichte + noteWirtschaft + notePhysik ) / notenZahl;
+
+            string s = durchschnitt.ToString("N2");
+
+            Wynik.Text = s;
+               
+           // PrzedmiotSzkolny.Text = listaPrzedmiotow[i];
         }
     }
 }

@@ -5,20 +5,100 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotenDurchschnitt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="650" Width="800">
     <Grid>
 
         <StackPanel>
              <Label FontSize="25" Padding="10"> Wpisz swoje oceny tutaj:</Label>
-             <TextBlock FontSize="20" Name="PrzedmiotSzkolny" Text="Mathe"></TextBlock>
-       
-            <TextBox FontSize="15" Background="AliceBlue" Padding="10" Margin="50,0,700,0"></TextBox>
-            <Button  Name="nextPrzedmiotSzkolny" Padding="10" Margin="50,0,650,0" Click="nextPrzedmiotSzkolny_Click">NEXT>>></Button>
-        </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width= "*"/>
+                    <ColumnDefinition Width= "*"/>
+                    <ColumnDefinition Width= "*"/>
+                    <ColumnDefinition Width= "*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="40,0,0,0">
+                    <Label FontSize="14">Mathe</Label>
+                    <Label FontSize="14">Deutsch</Label>
+                    <Label FontSize="14">Sport</Label>
+                    <Label FontSize="14">IT</Label>
+                    <Label FontSize="14">Biologie</Label>
+                    <Label FontSize="14">HSU/Natur und Technik</Label>
+                    <Label FontSize="14">Musik</Label>
+                    <Label FontSize="14">Werken</Label>
+                    <Label FontSize="14">WG</Label>
+                    <Label FontSize="14">Kunst</Label>
+                    <Label FontSize="14">Geografie</Label>
 
-        <Label Content="Twoj Wynik" HorizontalAlignment="Left" Margin="636,367,0,0" VerticalAlignment="Top"/>
-        <TextBlock Name="TextBlockDurschschitt" HorizontalAlignment="Left" Margin="723,372,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="62"/>
-        <Button Name ="ButtonRechneDR" Content="Button" HorizontalAlignment="Left" Margin="636,337,0,0" VerticalAlignment="Top" Width="149" Click="ButtonRechneDR_Click"/>
+
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="20,0,75,0">
+                    <TextBox Name="textBoxMathenote" FontSize="20" ></TextBox>
+                    <TextBox Name="textBoxDeutschnote" FontSize="20"></TextBox>
+                    <TextBox Name="textBoxSportnote" FontSize="20"></TextBox>
+                    <TextBox Name ="textBoxITnote"  FontSize="20"></TextBox>
+                    <TextBox Name ="textBoxBionote" FontSize="20"></TextBox>
+                    <TextBox Name ="textBoxHSUNaturnote" FontSize="20"></TextBox>
+                    <TextBox Name ="textBoxMusikTnote" FontSize="20"></TextBox>
+                    <TextBox Name ="textBoxWerkennote" FontSize="20"></TextBox>
+                    <TextBox Name ="textBoxWGnote" FontSize="20"></TextBox>
+                    <TextBox Name ="textBoxKunstnote" FontSize="20"></TextBox>
+                    <TextBox Name ="textBoxGeonote" FontSize="20"></TextBox>
+                    
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Margin="40,0,0,0" >
+                    <Label FontSize="14">GPG</Label>
+                    <Label FontSize="14">Englisch</Label>
+                    <Label FontSize="14">Französich</Label>
+                    <Label FontSize="14">Wirtschaf und Beruf</Label>
+                    <Label FontSize="14">Wirtschaft</Label>
+                    <Label FontSize="14">TG</Label>
+                    <Label FontSize="14">Physik</Label>
+                    <Label FontSize="14">Geschichte</Label>
+                    <Label FontSize="14">Chemie</Label>
+                    <Label FontSize="14">Religion</Label>
+
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="3" Margin="20,0,75,0">
+                    <TextBox Name="textBoxGPGnote" FontSize="20" ></TextBox>
+                    <TextBox Name="textBoxEnglischnote" FontSize="20"></TextBox>
+                    <TextBox Name="textBoxFrannote" FontSize="20"></TextBox>
+                    <TextBox Name="textBoxWuBnote" FontSize="20"></TextBox>
+                    <TextBox Name="textBoxWirtschaftnote" FontSize="20"></TextBox>
+                    <TextBox Name="textBoxTGnote" FontSize="20"></TextBox>
+                    <TextBox Name="textBoxPhysiknote" FontSize="20"></TextBox>
+                    <TextBox Name="textBoxGeschichtenote" FontSize="20"></TextBox>
+                    <TextBox Name="textBoxChemienote" FontSize="20"></TextBox>
+                    <TextBox Name="textBoxReligionnote" FontSize="20"></TextBox>
+
+                </StackPanel>
+
+
+
+
+
+            </Grid>
+            <Label Margin="10,0,0,0" FontSize="25"> Ile masz przedmiotow w szkole?</Label>
+            <TextBox x:Name="textBoxiloscPrzedmiotow" FontSize="25" Margin="300,0,450,0"></TextBox>
+                <Button  Name="nextPrzedmiotSzkolny" Background="AliceBlue" Padding="10" Margin="50,0,600,0" Click="nextPrzedmiotSzkolny_Click">
+                        <Button.Content>
+                            <StackPanel VerticalAlignment="Center" >
+                        <TextBlock VerticalAlignment="Center" Text="OBLICZ" Background="#959EE0" FontSize="20" Width="133" />
+                        <TextBlock  Text="Durchschnitt" FontSize="12"  Background="#959EE0"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+            <Label FontSize="20" Content="Twoja Srednia to:" Width="208"  />
+            <TextBlock x:Name="Wynik" FontSize="25"  Width="50"  />
+            
+            
+        </StackPanel>
+        <Grid/>
+
+        
        
 
 
