@@ -7,6 +7,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        
+            <StackPanel>
+                <Label HorizontalAlignment="Center" FontSize="35" Content="Sehr gererter Kunde"></Label>
+                <Label HorizontalAlignment="Center" FontSize="15" Content="Wahle eine option"></Label>
+            </StackPanel>
+        
+        <StackPanel>
+            <ListBox Margin="100" Height="105">
+                <ListBoxItem>Produkt Katalog</ListBoxItem>
+                <ListBoxItem>Kontakt aufnahmen</ListBoxItem>
+                <ListBoxItem>Bestelung</ListBoxItem>
+                <ListBoxItem>Regestration</ListBoxItem>
+                <ListBoxItem>Konto</ListBoxItem>
+                <ListBoxItem>Others1</ListBoxItem>
+                <ListBoxItem>Others2</ListBoxItem>
+                <ListBoxItem>Others3</ListBoxItem>
+            </ListBox>
+        </StackPanel>
 
     </Grid>
 </Window>

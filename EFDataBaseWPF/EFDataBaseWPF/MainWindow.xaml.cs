@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore.Design;
+//using Microsoft.EntityFrameworkCore.Tools;
 
 
 namespace EFDataBaseWPF
