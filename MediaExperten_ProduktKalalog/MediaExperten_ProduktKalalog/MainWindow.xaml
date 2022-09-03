@@ -48,6 +48,7 @@
         <TextBox x:Name="TB_ProductPreis" HorizontalAlignment="Left" Margin="751,428,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.5,0.726" Height="37" FontSize="20"/>
         <TextBox x:Name="TB_ProductType" HorizontalAlignment="Left" Margin="751,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.5,0.726" Height="37" FontSize="20"/>
         <Button x:Name="BTN_Change" Content="Change" HorizontalAlignment="Left" Margin="342,610,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-0.415,0.685" Background="#FFDEDE8A"/>
+        <Label Content="Gib nur ProduktID ein und" HorizontalAlignment="Left" Margin="468,591,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

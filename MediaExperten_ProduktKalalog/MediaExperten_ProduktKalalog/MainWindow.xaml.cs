@@ -30,7 +30,17 @@ namespace MediaExperten_ProduktKalalog
         DB_Controll dB_Controll = new DB_Controll();
         //dB_Controll.Connect();
          SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
-        
+
+        public void ClearFields()
+        {
+            TB_ProductID.Text = "";
+            TB_ProductName.Text = "";
+            TB_ProductPreis.Text = "";
+            TB_ProductQuantity.Text = "";
+            TB_ProductSize.Text = "";
+            TB_ProductType.Text = "";
+
+        }
         private void BTN_Exit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
@@ -74,7 +84,7 @@ namespace MediaExperten_ProduktKalalog
         private void BTN_Remove_Click(object sender, RoutedEventArgs e)
         {
             int produktID = int.Parse(TB_ProductID.Text);
-            string sqlString2 = "DELETE FROM Producers WHERE ProducerID = "+ produktID + ";";
+            string sqlString2 = "DELETE FROM Produkte WHERE ProduktID = "+ produktID + ";";
 
             string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
 
@@ -87,6 +97,7 @@ namespace MediaExperten_ProduktKalalog
 
 
                 MessageBox.Show(produktID + " Removed");
+                ClearFields();
 
 
 
@@ -119,8 +130,10 @@ namespace MediaExperten_ProduktKalalog
                 SqlCommand sqlCommand = new SqlCommand(sqlString2, sqlConnection);
                 sqlCommand.ExecuteNonQuery();
                 MessageBox.Show("Succesful");
+                ClearFields();
 
-                
+
+
             }
             catch(Exception ex) 
             {
