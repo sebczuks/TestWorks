@@ -41,6 +41,44 @@ namespace MediaExperten_ProduktKalalog
             TB_ProductType.Text = "";
 
         }
+
+        public void SearchProduktNach(string Eigenschaft, string searchfaktor)
+        {
+
+
+            SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
+            //string searchfaktor;
+            string sqlString1 = "SELECT * FROM dbo.Produkte WHERE Produkt"+searchfaktor + "=" +Eigenschaft + ";";
+
+
+
+
+            try
+            {
+                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
+                sqlConnection.Open();
+                MessageBox.Show("ok");
+                SqlCommand sqlCommand = new SqlCommand(sqlString1, sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+                DataTable dataTable = new DataTable(sqlString1);
+
+                dataAdapter.Fill(dataTable);
+                DataGridProducts.ItemsSource = dataTable.DefaultView;
+                dataAdapter.Update(dataTable);
+
+
+
+                sqlConnection.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
         private void BTN_Exit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
@@ -106,6 +144,7 @@ namespace MediaExperten_ProduktKalalog
             {
                
                     MessageBox.Show(ex.Message);
+                    MessageBox.Show("Something went wrong");
 
             }
         }
@@ -138,11 +177,65 @@ namespace MediaExperten_ProduktKalalog
             catch(Exception ex) 
             {
                 MessageBox.Show(ex.Message);
+                MessageBox.Show("Something went wrong");
 
             }
             
 
 
         }
+
+        private void SearchIP_Click(object sender, RoutedEventArgs e)
+        {
+            SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
+            string idnummer = TB_ProductID.Text;
+
+            string sqlString1 = "SELECT * FROM dbo.Produkte WHERE ProduktID =" + idnummer + ";";
+            //string remove;
+
+           // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
+
+            try
+            {
+                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
+                sqlConnection.Open();
+                MessageBox.Show("Complete");
+                SqlCommand sqlCommand = new SqlCommand(sqlString1, sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+                DataTable dataTable = new DataTable(sqlString1);
+
+                dataAdapter.Fill(dataTable);
+                DataGridProducts.ItemsSource = dataTable.DefaultView;
+                dataAdapter.Update(dataTable);
+
+
+
+                sqlConnection.Close();
+                ClearFields();
+            }
+
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void SearchName_Click(object sender, RoutedEventArgs e)
+        {
+            string eigenschaft = TB_ProductName.Text;
+            string searchfaktor = "Name";
+                SearchProduktNach(eigenschaft, searchfaktor);
+        }
+
+        private void SearchType_Click(object sender, RoutedEventArgs e)
+        {
+            string eigenschaft = TB_ProductType.Text;
+            string searchfaktor = "Typ";
+            SearchProduktNach(eigenschaft, searchfaktor);
+
+        }
     }
-}
+    }
+
