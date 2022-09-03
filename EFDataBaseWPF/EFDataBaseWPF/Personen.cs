@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EFDataBaseWPF
 {
-    internal class Personen : DATABASECONTROLL
+    internal class Personen 
     {
         public int _ID { get; set; }
         public string _Name { get; set; }

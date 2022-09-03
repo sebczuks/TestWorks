@@ -29,5 +29,9 @@ namespace EFDataBaseWPF
         {
             InitializeComponent();
         }
+
+        Personen newPerson = new Personen();
+
+        newPersone
     }
 }

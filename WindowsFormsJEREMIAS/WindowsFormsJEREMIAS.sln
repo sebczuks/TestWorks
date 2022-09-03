@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsJEREMIAS", "WindowsFormsJEREMIAS\WindowsFormsJEREMIAS.csproj", "{A95A3887-A3DD-45E3-B366-FC35CEA4B877}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A95A3887-A3DD-45E3-B366-FC35CEA4B877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A95A3887-A3DD-45E3-B366-FC35CEA4B877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A95A3887-A3DD-45E3-B366-FC35CEA4B877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A95A3887-A3DD-45E3-B366-FC35CEA4B877}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F1DF72C-21CF-4C11-8B34-7D148D026FED}
+	EndGlobalSection
+EndGlobal
