@@ -33,6 +33,11 @@ namespace MediaExperten_ProduktKalalog
             }
             return _connection;
         }
+        public void LoginCheck(string login, string password)
+        {
+
+
+        }
 
        
     }

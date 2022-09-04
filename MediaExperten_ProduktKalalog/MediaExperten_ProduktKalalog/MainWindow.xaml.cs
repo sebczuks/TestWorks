@@ -71,6 +71,46 @@ namespace MediaExperten_ProduktKalalog
 
 
                 sqlConnection.Close();
+                ClearFields();
+            }
+
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+
+        public void SearchProduktNachfloate(float eigenschaft, string searchfaktor)
+        {
+
+
+            SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
+            //string searchfaktor;
+            string sqlString1 = "SELECT * FROM dbo.Produkte WHERE Produkt" + searchfaktor + "=" + eigenschaft + " ;";
+
+
+
+
+            try
+            {
+                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
+                sqlConnection.Open();
+                MessageBox.Show("ok");
+                SqlCommand sqlCommand = new SqlCommand(sqlString1, sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+                DataTable dataTable = new DataTable(sqlString1);
+
+                dataAdapter.Fill(dataTable);
+                DataGridProducts.ItemsSource = dataTable.DefaultView;
+                dataAdapter.Update(dataTable);
+
+
+
+                sqlConnection.Close();
+                ClearFields();
             }
 
             catch (SqlException ex)
@@ -109,6 +149,7 @@ namespace MediaExperten_ProduktKalalog
 
 
                 sqlConnection.Close();
+                ClearFields();
             }
 
             catch (SqlException ex)
@@ -118,6 +159,8 @@ namespace MediaExperten_ProduktKalalog
 
 
         }
+
+      
 
 
         private void BTN_Exit_Click(object sender, RoutedEventArgs e)
@@ -130,9 +173,9 @@ namespace MediaExperten_ProduktKalalog
            
             SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
             string sqlString1 = "SELECT * FROM dbo.Produkte";
-            string remove;
+            
 
-            string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
+           // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
 
             try
             {
@@ -209,7 +252,7 @@ namespace MediaExperten_ProduktKalalog
                 sqlConnection.Open();
                 SqlCommand sqlCommand = new SqlCommand(sqlString2, sqlConnection);
                 sqlCommand.ExecuteNonQuery();
-                MessageBox.Show("Succesful");
+                MessageBox.Show("Insert Succesful");
                 ClearFields();
 
 
@@ -293,7 +336,31 @@ namespace MediaExperten_ProduktKalalog
        
         }
 
-       
+        private void SearchSize_Click(object sender, RoutedEventArgs e)
+        {
+            string eigenschaft = TB_ProductSize.Text;
+            string searchfaktor = "Size";
+            SearchProduktNachstring(eigenschaft, searchfaktor);
+
+        }
+
+        private void SearchPreis_Click(object sender, RoutedEventArgs e)
+        {
+            float eigenschaft = float.Parse(TB_ProductPreis.Text);
+            string searchfaktor = "Preis";
+            SearchProduktNachfloate(eigenschaft, searchfaktor);
+        }
+
+        private void BTN_Change_Click(object sender, RoutedEventArgs e)
+        {
+            //Open new login window 
+            LoginWindow logWin = new LoginWindow();
+            logWin.Show();
+            //gat data from DB (login, password)
+            //check conditions
+            //this.close();
+            //open new Window Change DB
+        }
     }
     }
 
