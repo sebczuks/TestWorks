@@ -26,10 +26,11 @@ namespace MediaExperten_ProduktKalalog
         public MainWindow()
         {
             InitializeComponent();
+            DB_Controll dB_Controll = new DB_Controll();
+            dB_Controll.Connect(); // method that connect to DB and hold stabile connection
         }
-        DB_Controll dB_Controll = new DB_Controll();
-        //dB_Controll.Connect();
-         SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
+       
+         //SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
 
         public void ClearFields()
         {
@@ -42,13 +43,13 @@ namespace MediaExperten_ProduktKalalog
 
         }
 
-        public void SearchProduktNach(string Eigenschaft, string searchfaktor)
+        public void SearchProduktNachint(int eigenschaft, string searchfaktor)
         {
 
 
             SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
             //string searchfaktor;
-            string sqlString1 = "SELECT * FROM dbo.Produkte WHERE Produkt"+searchfaktor + "=" +Eigenschaft + ";";
+            string sqlString1 = "SELECT * FROM dbo.Produkte WHERE Produkt"+searchfaktor + "=" +eigenschaft + ";";
 
 
 
@@ -79,6 +80,46 @@ namespace MediaExperten_ProduktKalalog
 
 
         }
+
+        public void SearchProduktNachstring(string eigenschaft, string searchfaktor)
+        {
+
+
+            SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
+            //string searchfaktor;
+            string sqlString1 = "SELECT * FROM dbo.Produkte WHERE Produkt" + searchfaktor + "='"+eigenschaft+"' ;";
+
+
+
+
+            try
+            {
+                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
+                sqlConnection.Open();
+                MessageBox.Show("ok");
+                SqlCommand sqlCommand = new SqlCommand(sqlString1, sqlConnection);
+                sqlCommand.ExecuteNonQuery();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+                DataTable dataTable = new DataTable(sqlString1);
+
+                dataAdapter.Fill(dataTable);
+                DataGridProducts.ItemsSource = dataTable.DefaultView;
+                dataAdapter.Update(dataTable);
+
+
+
+                sqlConnection.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+
+        }
+
+
         private void BTN_Exit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
@@ -187,38 +228,43 @@ namespace MediaExperten_ProduktKalalog
 
         private void SearchIP_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
-            string idnummer = TB_ProductID.Text;
+            string searchfaktor = "ID";
+            int idnummer = int.Parse(TB_ProductID.Text);
+            SearchProduktNachint(idnummer, searchfaktor );
+            ClearFields();
 
-            string sqlString1 = "SELECT * FROM dbo.Produkte WHERE ProduktID =" + idnummer + ";";
+           // SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
+            
+
+           // string sqlString1 = "SELECT * FROM dbo.Produkte WHERE ProduktID =" + idnummer + ";";
             //string remove;
 
            // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
 
-            try
-            {
+           // try
+            //{
                 //SqlConnection sqlConnection = new SqlConnection(_connectionString);
-                sqlConnection.Open();
-                MessageBox.Show("Complete");
-                SqlCommand sqlCommand = new SqlCommand(sqlString1, sqlConnection);
-                sqlCommand.ExecuteNonQuery();
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
-                DataTable dataTable = new DataTable(sqlString1);
+                //sqlConnection.Open();
+                //MessageBox.Show("Complete");
+                //SqlCommand sqlCommand = new SqlCommand(sqlString1, sqlConnection);
+                //sqlCommand.ExecuteNonQuery();
+                //SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+                //DataTable dataTable = new DataTable(sqlString1);
 
-                dataAdapter.Fill(dataTable);
-                DataGridProducts.ItemsSource = dataTable.DefaultView;
-                dataAdapter.Update(dataTable);
+                //dataAdapter.Fill(dataTable);
+                //DataGridProducts.ItemsSource = dataTable.DefaultView;
+                //dataAdapter.Update(dataTable);
 
 
 
-                sqlConnection.Close();
-                ClearFields();
-            }
+                //sqlConnection.Close();
+                //ClearFields();
+            //}
 
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //catch (SqlException ex)
+            //{
+              //  MessageBox.Show(ex.Message);
+            //}
 
         }
 
@@ -226,16 +272,28 @@ namespace MediaExperten_ProduktKalalog
         {
             string eigenschaft = TB_ProductName.Text;
             string searchfaktor = "Name";
-                SearchProduktNach(eigenschaft, searchfaktor);
+            SearchProduktNachstring(eigenschaft, searchfaktor);
         }
 
         private void SearchType_Click(object sender, RoutedEventArgs e)
         {
-            string eigenschaft = TB_ProductType.Text;
+            int eigenschaft = int.Parse(TB_ProductType.Text);
             string searchfaktor = "Typ";
-            SearchProduktNach(eigenschaft, searchfaktor);
+            SearchProduktNachint(eigenschaft, searchfaktor);
 
         }
+
+
+
+        private void SLIDER_ProductPreis_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            int k = (int)SLIDER_ProductPreis.Value;
+
+            TB_ProductPreis.Text = k.ToString();
+       
+        }
+
+       
     }
     }
 

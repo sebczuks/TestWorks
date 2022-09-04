@@ -23,7 +23,7 @@
             </Button.Background>
         </Button>
         <Label x:Name="LB1" Content="Media Experten Produkt Katalog" HorizontalAlignment="Left" Margin="314,22,0,0" VerticalAlignment="Top" Foreground="#FFB3D24D" FontSize="35"/>
-        <DataGrid x:Name="DataGridProducts" AutoGenerateColumns="True" Margin="183,137,177,320"/>
+        <DataGrid x:Name="DataGridProducts" AutoGenerateColumns="True" Margin="183,137,177,320" FontSize="20"/>
         <Button x:Name="BTN_ShowDBProducts" Content="SHOW Produkte" HorizontalAlignment="Left" Margin="512,84,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-0.415,0.685" Click="BTN_ShowDBProducts_Click" FontStyle="Normal" Foreground="White" BorderBrush="#FF545427">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -33,21 +33,21 @@
             </Button.Background>
         </Button>
         <Button x:Name="BTN_Remove" Content="Remove" HorizontalAlignment="Left" Margin="488,610,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-0.415,0.685" Click="BTN_Remove_Click" Background="#FFDEDE8A" Cursor="Hand"/>
-        <Button x:Name="BTN_Search" Content="Search" HorizontalAlignment="Left" Margin="636,610,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-0.415,0.685" Background="#FFDEDE8A"/>
+        <Button x:Name="BTN_Search" Content="Search" HorizontalAlignment="Left" Margin="946,474,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-0.415,0.685" Background="#FFDEDE8A"/>
         <Button x:Name="BTN_Add" Content="Add" HorizontalAlignment="Left" Margin="790,610,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-0.415,0.685" Click="BTN_Add_Click" Background="#FFDEDE8A"/>
         <Label x:Name="LB_ProductID" Content="ProduktID" HorizontalAlignment="Left" Margin="183,389,0,0" VerticalAlignment="Top" FontSize="25" RenderTransformOrigin="0.651,1.053"/>
         <Label x:Name="LB_ProductName" Content="Produkt Name" HorizontalAlignment="Left" Margin="183,456,0,0" VerticalAlignment="Top" FontSize="25"/>
         <Label x:Name="LB_ProductSize" Content="Produkt Size" HorizontalAlignment="Left" Margin="183,522,0,0" VerticalAlignment="Top" FontSize="25"/>
         <Label x:Name="LB_ProductQuantity1" Content="Produkt Bestand" HorizontalAlignment="Left" Margin="478,389,0,0" VerticalAlignment="Top" FontSize="25"/>
         <TextBox x:Name="TB_ProductID" HorizontalAlignment="Left" Margin="186,426,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.726" Height="20" FontSize="10"/>
-        <TextBox x:Name="TB_ProductName" HorizontalAlignment="Left" Margin="189,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.726" Height="20" FontSize="20"/>
-        <TextBox x:Name="TB_ProductSize" HorizontalAlignment="Left" Margin="188,556,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.726" Height="20" FontSize="20"/>
-        <TextBox x:Name="TB_ProductQuantity" HorizontalAlignment="Left" Margin="485,426,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.726" Height="20" FontSize="20"/>
+        <TextBox x:Name="TB_ProductName" HorizontalAlignment="Left" Margin="189,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.726" Height="20" FontSize="10"/>
+        <TextBox x:Name="TB_ProductSize" HorizontalAlignment="Left" Margin="188,556,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.726" Height="20" FontSize="10"/>
+        <TextBox x:Name="TB_ProductQuantity" HorizontalAlignment="Left" Margin="485,426,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.726" Height="20" FontSize="10"/>
         <Label x:Name="LB_ProductPreis" Content="Produkt Preiss" HorizontalAlignment="Left" Margin="478,456,0,0" VerticalAlignment="Top" FontSize="25" RenderTransformOrigin="0.651,1.053"/>
         <Label x:Name="LB_ProductType" Content="Produkt Typ" HorizontalAlignment="Left" Margin="478,518,0,0" VerticalAlignment="Top" FontSize="25" RenderTransformOrigin="0.651,1.053"/>
-        <TextBox x:Name="TB_ProductPreis" HorizontalAlignment="Left" Margin="485,494,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.726" Height="20" FontSize="20"/>
+        <TextBox x:Name="TB_ProductPreis" HorizontalAlignment="Left" Margin="645,474,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" RenderTransformOrigin="0.5,0.726" Height="20" FontSize="14"/>
         <TextBox x:Name="TB_ProductType" HorizontalAlignment="Left" Margin="485,555,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.726" Height="20" FontSize="20"/>
-        <Button x:Name="BTN_Change" Content="Change" HorizontalAlignment="Left" Margin="790,574,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-0.415,0.685" Background="#FFDEDE8A"/>
+        <Button x:Name="BTN_Change" Content="Change" HorizontalAlignment="Left" Margin="647,610,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-0.415,0.685" Background="#FFDEDE8A"/>
         <Label Content="Gib nur ProduktID ein und" HorizontalAlignment="Left" Margin="468,591,0,0" VerticalAlignment="Top"/>
         <Button x:Name="BTN_ShowDBProducts_Copy" Content="Refresh" HorizontalAlignment="Left" Margin="636,84,0,0" VerticalAlignment="Top" Width="100" Height="30" RenderTransformOrigin="-0.415,0.685" Click="BTN_ShowDBProducts_Click" FontStyle="Normal" Foreground="White" BorderBrush="#FF545427">
             <Button.Background>
@@ -63,9 +63,7 @@
         <Button x:Name="SearchType" HorizontalAlignment="Left" Margin="647,556,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.286,0.403" Width="23" Click="SearchType_Click">
             <Image Height="20" Source="/Img/icons8-suche-48.png" Stretch="Fill" Width="20"/>
         </Button>
-        <Button x:Name="SearchPreis" HorizontalAlignment="Left" Margin="647,494,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.286,0.403" Width="23">
-            <Image Height="20" Source="/Img/icons8-suche-48.png" Stretch="Fill" Width="20"/>
-        </Button>
+        <Button x:Name="SearchPreis"  HorizontalAlignment="Left" Margin="647,494,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.286,0.403" Width="23" Height="24"/>
         <Button x:Name="SearchQuantity" HorizontalAlignment="Left" Margin="647,426,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.286,0.403" Width="23">
             <Image Height="20" Source="/Img/icons8-suche-48.png" Stretch="Fill" Width="20"/>
         </Button>
@@ -75,6 +73,8 @@
         <Button x:Name="SearchName" HorizontalAlignment="Left" Margin="351,494,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.286,0.403" Width="23" Click="SearchName_Click">
             <Image Height="20" Source="/Img/icons8-suche-48.png" Stretch="Fill" Width="20"/>
         </Button>
+        <Slider x:Name="SLIDER_ProductPreis"       Minimum="0"
+            Maximum="2000" ValueChanged="SLIDER_ProductPreis_ValueChanged" HorizontalAlignment="Left" Margin="488,504,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="0.517,-0.498" Cursor="Hand"/>
 
     </Grid>
 </Window>
