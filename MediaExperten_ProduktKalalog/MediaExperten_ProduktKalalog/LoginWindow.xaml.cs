@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
+using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,19 +38,45 @@ namespace MediaExperten_ProduktKalalog
             SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
             string loginstring = "SELECT Login FROM dbo.DB_Controll WHERE ID = 1";
             string passwordstring = "SELECT Password FROM dbo.DB_Controll WHERE ID = 1";
+            string checklogin;
 
+          //  DB_Controll loginControll = new DB_Controll();
+          //loginControll.Connect();
 
-            DB_Controll loginControll = new DB_Controll();
-            loginControll.Connect();
-            
             SqlCommand getlogin = new SqlCommand(loginstring, sqlConnection );
             SqlCommand getpassword = new SqlCommand(passwordstring, sqlConnection);
-            getlogin.ExecuteNonQuery();
+
+            SqlDataReader readlogin = getlogin.ExecuteReader();
+            SqlDataReader readpassword = getpassword.ExecuteReader();
+
+            // SqlDataAdapter loginAdapter = new SqlDataAdapter(getlogin);
+            // SqlDataAdapter passwordAdapter = new SqlDataAdapter(getpassword);
+            getlogin.Parameters.AddWithValue("@ID", 1);
+            while ( readlogin.Read())
+            {
+                //this.checklogin = readlogin["vorname"].ToString();
+                //checklogin = readlogin.GetValue(0).ToString();
+            }
+
+            DataTable dataTablelogin = new DataTable(loginstring);
+            DataTable dataTablepasswoed = new DataTable(passwordstring);
+
+           // string checklogin = loginAdapter.Fill(dataTablelogin).ToString();
+           // passwordAdapter.Fill(dataTablepasswoed);
+
+            //string checkpassword = passwordAdapter.Fill(dataTablepasswoed).ToString();
+
+            //string checklogin = dataTablelogin.ToString(); 
+
+            //DataGridProducts.ItemsSource = dataTable.DefaultView;
+            //dataAdapter.Update(dataTable);
+            //getlogin.ExecuteNonQuery();
+
 
 
             if (login == login) // && ()
             {
-                MessageBox.Show("OK");
+                MessageBox.Show("OK "  );
                 return;
             }
             else 

@@ -57,9 +57,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="SearchIP" HorizontalAlignment="Left" Margin="351,426,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="23" Background="#FFDDDDDD" Click="SearchIP_Click" Cursor="AppStarting">
-            <Image Height="20" Source="/Img/icons8-suche-48.png" Stretch="Fill" Width="20"/>
-        </Button>
+        <Button x:Name="SearchID" HorizontalAlignment="Left" Margin="351,426,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="23" Background="#FFDDDDDD" Click="SearchIP_Click" Cursor="AppStarting" Height="20"/>
         <Button x:Name="SearchType" HorizontalAlignment="Left" Margin="647,556,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.286,0.403" Width="23" Click="SearchType_Click">
             <Image Height="20" Source="/Img/icons8-suche-48.png" Stretch="Fill" Width="20"/>
         </Button>

@@ -23,11 +23,15 @@ namespace MediaExperten_ProduktKalalog
     /// </summary>
     public partial class MainWindow : Window
     {
+
+      SqlConnection _connection;
         public MainWindow()
         {
             InitializeComponent();
             DB_Controll dB_Controll = new DB_Controll();
-            dB_Controll.Connect(); // method that connect to DB and hold stabile connection
+             _connection = dB_Controll.Connect(); // method that connect to DB and hold stabile connection
+
+           
         }
        
          //SqlConnection sqlConnection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True");
@@ -66,7 +70,7 @@ namespace MediaExperten_ProduktKalalog
 
                 dataAdapter.Fill(dataTable);
                 DataGridProducts.ItemsSource = dataTable.DefaultView;
-                dataAdapter.Update(dataTable);
+               // dataAdapter.Update(dataTable);
 
 
 
@@ -237,7 +241,7 @@ namespace MediaExperten_ProduktKalalog
         {
             //Przekatanie wartoci z TextBoxow do zmiennych
             int produktID = int.Parse(TB_ProductID.Text);
-             string produktName = TB_ProductName.Text;
+            string produktName = TB_ProductName.Text;
             string produktSize = TB_ProductSize.Text;
             int produktQuantity = int.Parse(TB_ProductQuantity.Text);
             float produktPreis = float.Parse(TB_ProductPreis.Text);
@@ -314,15 +318,21 @@ namespace MediaExperten_ProduktKalalog
         private void SearchName_Click(object sender, RoutedEventArgs e)
         {
             string eigenschaft = TB_ProductName.Text;
+            string produktName = TB_ProductName.Text;
             string searchfaktor = "Name";
             SearchProduktNachstring(eigenschaft, searchfaktor);
+            Produkte pr1 = new Produkte();
+            DataGridProducts.ItemsSource = pr1.SerachProductName(_connection, produktName);
         }
 
         private void SearchType_Click(object sender, RoutedEventArgs e)
         {
-            int eigenschaft = int.Parse(TB_ProductType.Text);
-            string searchfaktor = "Typ";
-            SearchProduktNachint(eigenschaft, searchfaktor);
+           // int eigenschaft = int.Parse(TB_ProductType.Text);
+            int produktType = int.Parse(TB_ProductType.Text);
+           
+            //SearchProduktNachint(eigenschaft, searchfaktor);
+          
+            DataGridProducts.ItemsSource = Produkte.SerachProductType(_connection, produktType);
 
         }
 
@@ -354,6 +364,7 @@ namespace MediaExperten_ProduktKalalog
         private void BTN_Change_Click(object sender, RoutedEventArgs e)
         {
             //Open new login window 
+
             LoginWindow logWin = new LoginWindow();
             logWin.Show();
             //gat data from DB (login, password)
