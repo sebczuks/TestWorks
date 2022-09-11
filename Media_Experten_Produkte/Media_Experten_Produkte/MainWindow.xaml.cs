@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
+
 namespace Media_Experten_Produkte
 {
     /// <summary>
@@ -44,7 +45,7 @@ namespace Media_Experten_Produkte
         private void BTN_ShowSearchedRecord_Click(object sender, RoutedEventArgs e)
         {
 
-            int id = int.Parse(TBox_SeatchID.Text);
+            int id = int.Parse(TBox_SearchID.Text);
             DG_Produkte.ItemsSource = pr.ShowSearchedRecord(id);
 
         }
@@ -52,6 +53,15 @@ namespace Media_Experten_Produkte
         private void BTN_ExitMainWindow_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void BTN_LoginMainWindow_Click(object sender, RoutedEventArgs e)
+        {
+            LoginWindow LogIn = new LoginWindow();
+            LogIn.Show();
+            
+            
+
         }
     }
 }

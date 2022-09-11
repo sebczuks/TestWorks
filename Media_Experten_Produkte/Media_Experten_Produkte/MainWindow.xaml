@@ -13,34 +13,46 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid Margin="20" Opacity="0.99">
-        <StackPanel x:Name="SP_Left" HorizontalAlignment="Left" Width="300" Margin="0,20,0,0">
-            <Button Content="Produkte Anzeigen" x:Name="BTN_ShowProdukte" Height="61" Margin ="10" Width="140" Click="BTN_ShowProdukte_Click">
-
-            </Button>
-            <DockPanel Margin=" 10">
-                <Label Height="26" Width="114">Suche nach ID</Label>
-                <TextBox x:Name="TBox_SearchID" TextWrapping="Wrap" Width="160" Height="34" FontSize="20"/>
-                <Button Content="&gt;&gt;" x:Name="BTN_ShowSearchedRecord" Height="34" Width="46" Click="BTN_ShowSearchedRecord_Click"/>
-            </DockPanel>
-            <DockPanel Margin=" 10" Height="37">
-                <Label Content="Suche nach Name" Width="112"/>
-                <TextBox x:Name="TBox_SearchID_Copy" TextWrapping="Wrap" FontSize="20" Width="134"/>
-                <Button Content="&gt;&gt;" x:Name="BTN_ShowSearchedRecord" Click="BTN_ShowSearchedRecord_Click" Width="31"/>
-
-            </DockPanel>
 
 
 
-        </StackPanel>
+
+
+
+
+
+
         <StackPanel x:Name="SP_Right" HorizontalAlignment="Left" Width="555" Margin="305,20,0,0">
             <DataGrid x:Name="DG_Produkte" Height="306" d:ItemsSource="{d:SampleData ItemCount=5}" Width="553" HorizontalAlignment="Stretch"/>
-            <DockPanel> 
-            <Button x:Name="BTN_LoginMainWindow" Content="Login" Width="125" Margin="5"/>
-            <Button x:Name="BTN_LogoutMainWindow" Content="Logout" Width="125" Margin="5"/>
-            <Button x:Name="BTN_ExitMainWindow" Content="EXIT" Width="125" Margin="5" Click="BTN_ExitMainWindow_Click"/>
+            <DockPanel>
+                <Button x:Name="BTN_LoginMainWindow" Content="Login" Width="125" Margin="5" Click="BTN_LoginMainWindow_Click"/>
+                <Button x:Name="BTN_LogoutMainWindow" Content="Logout" Width="125" Margin="5"/>
+                <Button x:Name="BTN_ExitMainWindow" Content="EXIT" Width="125" Margin="5" Click="BTN_ExitMainWindow_Click"/>
             </DockPanel>
         </StackPanel>
         <StackPanel x:Name="SP_Top" VerticalAlignment="Top" Height="20" Margin="5"/>
+        <Button Content="Produkte Anzeigen" x:Name="BTN_ShowProdukte"  Height="61" Margin ="77,25,667,343" Width="140" Click="BTN_ShowProdukte_Click">
+
+
+        </Button>
+       
+        <Button Content="&gt;&gt;" x:Name="BTN_ShowSearchedRecord" Height="34" Width="46" Click="BTN_ShowSearchedRecord_Click" Margin="237,118,601,277">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border CornerRadius="10"  Background="#463190">
+                        <TextBlock Text=">>" 
+                                           HorizontalAlignment="Center"                                           
+                                           Margin="0,5,0,0"
+                                           Height="40"
+                                           FontSize="20"></TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+      
+        <TextBox x:Name="TBox_SearchID" TextWrapping="Wrap" Height="34" FontSize="20" Margin="115,118,652,277"/>
+
+        <Label Height="26" Width="114" Margin="1,122,769,281">Suche nach ID</Label>
 
     </Grid>
 </Window>
