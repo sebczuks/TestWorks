@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Window1" Height="250" Width="175">
     <Grid>
-        <Button Content="Login" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.304,0.137"/>
+        <Button Content="Login" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.304,0.137" Click="Button_Click"/>
         <Button Content="Register" HorizontalAlignment="Center" Margin="0,204,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.304,0.137"/>
         <Label x:Name="LB_Login" Content="Username" HorizontalAlignment="Left" Margin="25,51,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LB_Password" Content="Pasword" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Center"/>

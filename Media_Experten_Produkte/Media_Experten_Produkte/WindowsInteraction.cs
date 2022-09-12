@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Media_Experten_Produkte
 {
-    internal class Class1
+    
+    internal class WindowsInteraction
     {
+        public bool loginOK;
+     //   public bool getLoginOK()
+       //     if()
+
+
     }
 }

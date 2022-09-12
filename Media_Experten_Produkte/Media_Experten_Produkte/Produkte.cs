@@ -27,7 +27,7 @@ namespace Media_Experten_Produkte
         {
             if (position == 0)
             {
-                ProductCatID = 0; ProductSize = null;
+                this.ProductCatID = 0; ProductSize = null;
             }
             else
             {
@@ -40,6 +40,7 @@ namespace Media_Experten_Produkte
 
         public DataView ShowProdukteTable()
         {
+            //This Method will connect to DB and get DataTable with 
 
             SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
             string sqlString1 = "SELECT * FROM dbo.Produkte";
@@ -57,14 +58,8 @@ namespace Media_Experten_Produkte
                 sqlCommand.ExecuteNonQuery();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable(sqlString1);
-
                 dataAdapter.Fill(dataTable);
                 return dataTable.DefaultView;
-
-
-
-
-
                 con.Close();
             }
 
@@ -77,7 +72,7 @@ namespace Media_Experten_Produkte
 
         }
 
-        public DataView ShowSearchedRecord(int id)
+        public DataView ShowSearchedResultID(int id)
         {
             SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
             string sqlString1 = "SELECT * FROM dbo.Produkte Where ProduktID =" + id + ";";
@@ -113,6 +108,64 @@ namespace Media_Experten_Produkte
                 return dataView;
             }
 
+        }
+
+        public DataView ShowSearchedResultName(string name)
+        {
+            DataView dataView = new DataView();
+            return dataView;
+        }
+
+        public DataView ShowSearchedResultProducer(string producer)
+        {
+            DataView dataView = new DataView();
+            return dataView;
+
+        }
+
+        public DataView ShowSearchedResultTyp(string producer)
+        {
+            DataView dataView = new DataView();
+            return dataView;
+        }
+
+        public DataView ShowSearchedResultPreisBetween(int low, int high)
+        {
+
+            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
+           // string sqlString1 = "SELECT * FROM dbo.Produkte Where ProduktID =" + id + ";";
+            string sqlString2 = "SELECT * FROM dbo.Produkte Where ProduktPreiss BETWEEN " +low+ "AND " +high+";";
+
+
+            // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
+
+            try
+            {
+                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
+                con.Open();
+
+                // MessageBox.Show("Liste unserer Produkte");
+                SqlCommand sqlCommand = new SqlCommand(sqlString2, con);
+                sqlCommand.ExecuteNonQuery();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+                DataTable dataTable = new DataTable(sqlString2);
+
+                dataAdapter.Fill(dataTable);
+                return dataTable.DefaultView;
+
+
+
+
+
+                con.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                DataView dataView = new DataView();
+                return dataView;
+            }
         }
     }
 }
