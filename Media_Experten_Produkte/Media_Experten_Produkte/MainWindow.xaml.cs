@@ -149,6 +149,7 @@ namespace Media_Experten_Produkte
         {
             string login = TB_Login.Text;
             string password = TB_Password.Text;
+          //  string password = PBox_password.Text;
             //MessageBox.Show(login);
             //if(login == password)
             //{
@@ -157,6 +158,8 @@ namespace Media_Experten_Produkte
 
             //}
             //else { MessageBox.Show("Wrong"); };
+
+
            if( loginchecker.checkLoginandPassword(login, password))
             {
                 BTN_Add.Visibility = Visibility.Visible;
@@ -171,6 +174,11 @@ namespace Media_Experten_Produkte
             //TB_Login.Visibility = Visibility.Visible;
             //TB_Password.Visibility = Visibility.Visible;
             //BNT_CheckLogin.Visibility = Visibility.Visible;
+
+        }
+
+        private void ListBProducerList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }
