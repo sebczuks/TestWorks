@@ -10,6 +10,14 @@ namespace Media_Experten_Produkte
 {
     internal class Mitarbeiter
     {
+        public int MitarbeterID { get; set; }
+
+        public string MitarbeterName { get; set; }
+
+        public string MitarbeitrNachname {get; set; }
+
+        public string Abteinung { get; set; }
+
         public string login { get; set; }
         public string password { get; set; }
 

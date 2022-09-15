@@ -54,6 +54,7 @@ namespace Media_Experten_Produkte
             BNT_CheckLogin.Visibility = Visibility.Hidden;
             BTN_Add.Visibility = Visibility.Hidden;
             BTN_Remove.Visibility = Visibility.Hidden;
+            BTN_Change.Visibility = Visibility.Hidden;
 
 
 
@@ -164,6 +165,7 @@ namespace Media_Experten_Produkte
             {
                 BTN_Add.Visibility = Visibility.Visible;
                 BTN_Remove.Visibility = Visibility.Visible;
+                BTN_Change.Visibility = Visibility.Visible;
             }
             else { return;  };
 
@@ -179,6 +181,14 @@ namespace Media_Experten_Produkte
 
         private void ListBProducerList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+
+
+        }
+
+        private void BTN_Change_Click(object sender, RoutedEventArgs e)
+        {
+            ChangeWindow changeWindow = new ChangeWindow();
+            changeWindow.Show();
 
         }
     }
