@@ -13,27 +13,20 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <DataGrid x:Name="DataGrid_allProducts" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="130,23,130,217"/>
-        <Label x:Name="LB_ID" Content="Geben Sie die Datensatz ID" HorizontalAlignment="Left" Margin="130,240,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TBox_changeID" HorizontalAlignment="Left" Margin="297,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61"/>
-        <Label x:Name="LB_Name" Content="NAME" HorizontalAlignment="Left" Margin="130,266,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TBox_changeName" HorizontalAlignment="Left" Margin="130,292,0,0" TextWrapping="Wrap" Text="name" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="LB_Producer" Content="HERSTELLER" HorizontalAlignment="Left" Margin="263,266,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TBox_changeProducer" HorizontalAlignment="Left" Margin="263,292,0,0" TextWrapping="Wrap" Text="hersteller" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="LB_Preis" Content="PREISS" HorizontalAlignment="Left" Margin="405,266,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TBox_changePreis" HorizontalAlignment="Left" Margin="400,292,0,0" TextWrapping="Wrap" Text="preiss" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="LB_Bestand" Content="BESTAND" HorizontalAlignment="Left" Margin="534,266,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TBox_changeBestand" HorizontalAlignment="Left" Margin="534,292,0,0" TextWrapping="Wrap" Text="bestand" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="LB_TYP" Content="TYP" HorizontalAlignment="Left" Margin="667,266,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TBox_changeTyp" HorizontalAlignment="Left" Margin="670,292,0,0" TextWrapping="Wrap" Text="typ" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="BTN_changeAll" Content="AENDERUNGEN&#xD;&#xA;VORNEHMEN" HorizontalAlignment="Left" Margin="670,353,0,0" VerticalAlignment="Top" Height="62" Width="108" Click="BTN_changeAll_Click">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFD6E86C"/>
-                    <GradientStop Color="#FF75D05C" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
+        <DataGrid x:Name="DataGrid_allProducts" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="40,23,49,217" FontSize="18"/>
+        <Label x:Name="LB_ID" Content="Geben Sie die Datensatz ID" HorizontalAlignment="Left" Margin="130,224,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <TextBox x:Name="TBox_changeID" HorizontalAlignment="Left" Margin="399,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" Height="40" FontSize="20" TextChanged="TBox_changeID_TextChanged"/>
+        <Label x:Name="LB_Name" Content="NAME" HorizontalAlignment="Left" Margin="130,266,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <TextBox x:Name="TBox_changeName" HorizontalAlignment="Left" Margin="130,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="LB_Producer" Content="HERSTELLER" HorizontalAlignment="Left" Margin="263,266,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <TextBox x:Name="TBox_changeProducer" HorizontalAlignment="Left" Margin="263,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="LB_Preis" Content="PREISS " HorizontalAlignment="Left" Margin="405,266,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <TextBox x:Name="TBox_changePreis" HorizontalAlignment="Left" Margin="400,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="LB_Bestand" Content="BESTAND" HorizontalAlignment="Left" Margin="534,266,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <TextBox x:Name="TBox_changeBestand" HorizontalAlignment="Left" Margin="534,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="LB_TYP" Content="TYP" HorizontalAlignment="Left" Margin="667,266,0,0" VerticalAlignment="Top" FontSize="15"/>
+        <TextBox x:Name="TBox_changeTyp" HorizontalAlignment="Left" Margin="670,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="BTN_changeAllvalues" Content="Änderungen&#xD;&#xA; speichern" HorizontalAlignment="Left" Margin="690,343,0,0" VerticalAlignment="Top" Click="BTN_changeAllvalues_Click" Height="35" Width="75"/>
 
     </Grid>
 </Window>

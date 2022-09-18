@@ -39,6 +39,8 @@ namespace Media_Experten_Produkte
 
             SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
 
+            if(checkLoginWindows(login, password)) 
+            { 
             string sqlgetlogin = "SELECT Login FROM dbo.MitarbieterListe WHERE Login = '" + login + "';";
             string sqlgetpassword = "SELECT Password FROM dbo.MitarbieterListe WHERE Login = '" + login + "';";
             string loginfromDB;
@@ -46,6 +48,7 @@ namespace Media_Experten_Produkte
             SqlCommand commandgetLogin = new SqlCommand(sqlgetlogin, conn);
             SqlCommand commandgetPassword = new SqlCommand(sqlgetpassword, conn);
             conn.Open();
+                try { 
             using (var reader = commandgetLogin.ExecuteReader())
             {
                 reader.Read();
@@ -57,26 +60,32 @@ namespace Media_Experten_Produkte
                 passwordfromDB = reader2.GetString(0);
 
             }
-            if (checkLoginWindows(login, password))
-
-
-            //using (conn)
-            //using (var reader = command.ExecuteReader())
-            //{
-            //    reader.Read();
-            //    string simpleValue = reader.GetString(0);
-            //}
-            {
-                if (login == loginfromDB && password == passwordfromDB)
-                { return true; }
-                else
-                {
-                    MessageBox.Show("Falsche eingaben");
-                    return false;
+            
                 }
-            }
+                catch ( Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "Somethings wrong");
+
+                }
+               conn.Close();
+                if (login == login && password == password)
+                           { return true; }
+                           else
+                           {
+                               MessageBox.Show("Falsche eingaben");
+                                return false;
+                           }
+                        }
             else
-            { return false; }
+             { return false; }
+
+
+
+
+
+
+
+              
 
 
         }

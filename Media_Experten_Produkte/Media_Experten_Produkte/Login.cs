@@ -13,7 +13,7 @@ namespace Media_Experten_Produkte
         public string login { get; set; }
         public string password { get; set; }
 
-        public bool checkLoginWindows(string login, string password)
+        public bool CheckLoginWindows(string login, string password)
         {
            
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
@@ -26,9 +26,8 @@ namespace Media_Experten_Produkte
             { return true; }
         }
 
-        public bool checkLoginandPassword(string login, string password)
+        public bool CheckLoginandPassword(string login, string password)
         { 
-           
             SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
             
             string sqlgetlogin = "SELECT Login FROM dbo.MitarbieterListe WHERE Login = '" + login + "';";
@@ -48,15 +47,8 @@ namespace Media_Experten_Produkte
                 passwordfromDB = reader2.GetString(0);
 
             }
-            if ( checkLoginWindows(login, password))
-
-
-                //using (conn)
-                //using (var reader = command.ExecuteReader())
-                //{
-                //    reader.Read();
-                //    string simpleValue = reader.GetString(0);
-                //}
+            if ( CheckLoginWindows(login, password))
+            
             {   if(login == loginfromDB && password == passwordfromDB)
                         { return true; }
                  else {
@@ -68,9 +60,6 @@ namespace Media_Experten_Produkte
             { return false; }
 
 
-                 }
-
-
-                
-        }
+        }        
     }
+}

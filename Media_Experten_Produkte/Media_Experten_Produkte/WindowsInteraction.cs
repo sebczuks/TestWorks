@@ -9,7 +9,7 @@ namespace Media_Experten_Produkte
     
     internal class WindowsInteraction
     {
-        public bool loginOK;
+      //  public bool loginOK;
      //   public bool getLoginOK()
        //     if()
 

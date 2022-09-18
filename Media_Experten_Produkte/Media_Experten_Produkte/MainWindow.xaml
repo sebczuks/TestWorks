@@ -13,31 +13,103 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid Margin="20" Opacity="0.99">
-        <DataGrid x:Name="DG_Produkte" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="269,82,10,10" FontSize="18"/>
-        <TextBox x:Name="TBox_SearchID" HorizontalAlignment="Left" Margin="98,289,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="78" Height="20"/>
-        <Button x:Name="BTN_ShowProdukte" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="54,22,0,560"  Click="BTN_ShowProdukte_Click_1" Width="128" Content="Open DB" FontSize="28" FontFamily="Segoe UI Light" FontWeight="ExtraBold"/>
+        <DataGrid x:Name="DG_Produkte" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="254,82,15,10" FontSize="18"/>
+        <TextBox x:Name="TBox_SearchID" HorizontalAlignment="Left" Margin="98,289,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="78" Height="20">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Button x:Name="BTN_ShowProdukte" VerticalAlignment="Top"  HorizontalAlignment="Left" Margin="49,22,0,0"  Click="BTN_ShowProdukte_Click_1" Width="146" Content="Neu laden" FontSize="28" FontFamily="Segoe UI Light" FontWeight="ExtraBold">
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <Label x:Name="LB_Searchby" Content="Suche nach:" HorizontalAlignment="Left" Margin="12,235,0,0" VerticalAlignment="Top" FontSize="25"/>
         <Label Content="ID" HorizontalAlignment="Left" Margin="2,283,0,0" VerticalAlignment="Top" FontSize="15" Height="30"/>
         <Button x:Name="BTN_SearchbyID" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="222,289,0,0" VerticalAlignment="Top" Width="27" Click="BTN_SearchbyID_Click" Height="20"/>
         <Label Content="NAME" HorizontalAlignment="Left" Margin="2,313,0,0" VerticalAlignment="Top" FontSize="15" Height="30"/>
-        <TextBox x:Name="TBox_SearchName" HorizontalAlignment="Left" Margin="98,319,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="78" Height="20"/>
+        <TextBox x:Name="TBox_SearchName" HorizontalAlignment="Left" Margin="98,319,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="78" Height="20">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Button x:Name="BTN_SearchbyName" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="222,319,0,0" VerticalAlignment="Top" Width="27" Height="20" Click="BTN_SearchbyName_Click"/>
         <Label Content="HERSTELLER" HorizontalAlignment="Left" Margin="2,343,0,0" VerticalAlignment="Top" FontSize="15" Height="30"/>
         <Button x:Name="BTN_SearchbyProducer" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="222,348,0,0" VerticalAlignment="Top" Width="27" Height="20" Click="BTN_SearchbyProducer_Click"/>
         <Label Content="TYP" HorizontalAlignment="Left" Margin="2,373,0,0" VerticalAlignment="Top" FontSize="15" Height="30"/>
         <Button x:Name="BTN_SearchbyTyp" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="222,378,0,0" VerticalAlignment="Top" Width="27" Height="20" Click="BTN_SearchbyTyp_Click"/>
         <Label Content="PREISS" HorizontalAlignment="Left" Margin="2,403,0,0" VerticalAlignment="Top" FontSize="15" Height="30"/>
-        <TextBox x:Name="TBox_SearchPreisLow" HorizontalAlignment="Left" Margin="102,408,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="32" Height="20"/>
+        <TextBox Text="{Binding ElementName=Slider_Low, Path=Value}" x:Name="TBox_SearchPreisLow" HorizontalAlignment="Left" Margin="102,408,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="32" Height="20">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
         <Button x:Name="BTN_SearchbyPreis" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="222,408,0,0" VerticalAlignment="Top" Width="27" Height="20" Click="BTN_SearchbyPreis_Click"/>
-        <Button x:Name="BNT_Login" Content="Login" HorizontalAlignment="Left" Margin="19,104,0,0" VerticalAlignment="Top" Width="69" Click="BNT_Login_Click"/>
+        <Button x:Name="BTN_Login" Content="Login" HorizontalAlignment="Left" Margin="19,104,0,0" VerticalAlignment="Top" Width="69" Click="BTN_Login_Click">
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <Label x:Name="LB_Username" Content="Username:" HorizontalAlignment="Left" Margin="16,129,0,0" VerticalAlignment="Top"/>
         <Label x:Name="LB_Passwort" Content="Passwort:" HorizontalAlignment="Left" Margin="19,170,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TB_Login" HorizontalAlignment="Left" Margin="23,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TB_Password" HorizontalAlignment="Left" Margin="23,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="BNT_CheckLogin" Content="Login" HorizontalAlignment="Left" Margin="145,220,0,0" VerticalAlignment="Top" Width="69" Click="BNT_CheckLogin_Click"/>
-        <TextBox x:Name="TBox_SearchPreisHigh" HorizontalAlignment="Left" Margin="150,408,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="32" Height="20"/>
-        <Button x:Name="BTN_Add" Content="HINZU&#xD;&#xA;FÜGEN" HorizontalAlignment="Left" Margin="5,528,0,0" VerticalAlignment="Top" Height="75" Width="75" />
-        <Button x:Name="BTN_Remove" Content="LÖSCHEN" HorizontalAlignment="Left" Margin="98,528,0,0" VerticalAlignment="Top" Height="75" Width="75" />
+        <TextBox x:Name="TB_Login" HorizontalAlignment="Left" Margin="23,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <TextBox x:Name="TB_Password" HorizontalAlignment="Left" Margin="23,196,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Button x:Name="BTN_CheckLogin" Content="Login" HorizontalAlignment="Left" Margin="145,220,0,0" VerticalAlignment="Top" Width="69" Click="BTN_CheckLogin_Click">
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+
+        </Button>
+        <TextBox x:Name="TBox_SearchPreisHigh" HorizontalAlignment="Left" Margin="150,408,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="32" Height="20">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+        <Button x:Name="BTN_Add" Content="HINZU&#xD;&#xA;FÜGEN" HorizontalAlignment="Left" Margin="43,489,0,0" VerticalAlignment="Top" Height="75" Width="75" Click="BTN_Add_Click" >
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="BTN_Remove" Content="LÖSCHEN" HorizontalAlignment="Left" Margin="167,585,0,0" VerticalAlignment="Top" Height="38" Width="74" Click="BTN_Remove_Click" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
         <ComboBox x:Name="CBox_Producers" HorizontalAlignment="Left" Margin="98,346,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem>Amica</ComboBoxItem>
             <ComboBoxItem>Samsung</ComboBoxItem>
@@ -72,6 +144,16 @@
 
 
         </ComboBox>
-        <Button x:Name="BTN_Change" Content="BEARBEITEN" HorizontalAlignment="Left" Margin="189,528,0,0" VerticalAlignment="Top" Height="75" Width="75" Click="BTN_Change_Click" />
+        <Button x:Name="BTN_Change" Content="BEARBEITEN" HorizontalAlignment="Left" Margin="166,488,0,0" VerticalAlignment="Top" Height="76" Width="75" Click="BTN_Change_Click" >
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Label x:Name="LB_Remove" Content="Zeile nr: " HorizontalAlignment="Left" Margin="30,586,0,0" VerticalAlignment="Top" Width="82" FontSize="20"/>
+        <TextBox x:Name="TBox_rowRemove" HorizontalAlignment="Left" Margin="112,590,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" FontSize="20"/>
+        <Slider x:Name="Slider_Low"  HorizontalAlignment="Left" Margin="-2,438,0,0" VerticalAlignment="Top" Width="120" TickFrequency="10" Maximum="500" SmallChange="50" TickPlacement="TopLeft" LargeChange="10"/>
     </Grid>
 </Window>

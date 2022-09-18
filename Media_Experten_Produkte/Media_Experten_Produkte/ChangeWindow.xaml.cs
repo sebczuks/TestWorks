@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
+using Microsoft.Data.SqlClient;
+
 
 namespace Media_Experten_Produkte
 {
@@ -21,7 +23,9 @@ namespace Media_Experten_Produkte
     /// </summary>
     public partial class ChangeWindow : Window
     {
+        ChangeDB  change = new ChangeDB();
         Produkte produkte = new Produkte();
+        GUIBehavior get = new GUIBehavior();
 
 
         public ChangeWindow()
@@ -33,10 +37,39 @@ namespace Media_Experten_Produkte
 
         }
 
-        private void BTN_changeAll_Click(object sender, RoutedEventArgs e)
+     
+
+ 
+
+        private void BTN_changeAllvalues_Click(object sender, RoutedEventArgs e)
         {
-            // connect to DB
-            // "UPDATE Produkte SET ProduktName = 'TBox_changeName.Text;' WHERE ID = TBox_ID.Text
+            string name = TBox_changeName.Text;
+            int mne = int.Parse(TBox_changeID.Text);
+            string producer = TBox_changeProducer.Text;
+            int preis = int.Parse(TBox_changePreis.Text);
+            int bestand = int.Parse(TBox_changeBestand.Text);
+            string typ = TBox_changeTyp.Text;
+
+
+            change.Change(mne, name, producer, preis, bestand, typ);
+            DataGrid_allProducts.ItemsSource = produkte.ShowProdukteTable();
+        }
+
+        private void TBox_changeID_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           
+            int id = int.Parse(TBox_changeID.Text);
+
+            TBox_changeName.Text = get.GetValue(id, "ProduktName");
+            TBox_changeProducer.Text = get.GetValue(id, "ProduktProducer");
+            TBox_changeTyp.Text = get.GetValue(id, "ProduktTyp");
+
+            TBox_changePreis.Text =   get.GetValue(id, "ProduktPreiss");
+            TBox_changeBestand.Text = Convert.ToString(get.GetIntValue(id, "ProduktBestend"));
+
+          
+
+         
         }
     }
 }

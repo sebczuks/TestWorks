@@ -23,53 +23,83 @@ using System.Windows.Shapes;
 
 namespace Media_Experten_Produkte
 {
+  
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
 
-       
-        Login loginchecker = new Login();
-        Produkte pr = new Produkte();
-        WindowsInteraction checkLogin = new WindowsInteraction();
-        public MainWindow()
+        public void HideLogin()
         {
-            //static void HideLogin()
-            //{
-            //LB_Passwort.Visibility = Visibility.Hidden;
-            //LB_Username.Visibility = Visibility.Hidden;
-            //TB_Login.Visibility = Visibility.Hidden;
-            //TB_Password.Visibility = Visibility.Hidden;
-            //BNT_CheckLogin.Visibility = Visibility.Hidden;
+            LB_Passwort.Visibility = Visibility.Hidden;
+            LB_Username.Visibility = Visibility.Hidden;
+            TB_Login.Visibility = Visibility.Hidden;
+            TB_Password.Visibility = Visibility.Hidden;
+            BTN_CheckLogin.Visibility = Visibility.Hidden;
+            BTN_Add.Visibility = Visibility.Hidden;
+            BTN_Remove.Visibility = Visibility.Hidden;
+            BTN_Change.Visibility = Visibility.Hidden;
+            TBox_rowRemove.Visibility = Visibility.Hidden;
+            LB_Remove.Visibility = Visibility.Hidden;
 
-            //}
+        }
 
-            InitializeComponent();
+        public void ShowLogin()
+        {
+            LB_Passwort.Visibility = Visibility.Visible;
+            LB_Username.Visibility = Visibility.Visible;
+            TB_Login.Visibility = Visibility.Visible;
+            TB_Password.Visibility = Visibility.Visible;
+            BTN_CheckLogin.Visibility = Visibility.Visible;
+
+        }
+
+        public void ShowLoginOK()
+        {
+            BTN_Add.Visibility = Visibility.Visible;
+            BTN_Remove.Visibility = Visibility.Visible;
+            BTN_Change.Visibility = Visibility.Visible;
+            TBox_rowRemove.Visibility = Visibility.Visible;
+            LB_Remove.Visibility = Visibility.Visible;
 
             LB_Passwort.Visibility = Visibility.Hidden;
             LB_Username.Visibility = Visibility.Hidden;
             TB_Login.Visibility = Visibility.Hidden;
             TB_Password.Visibility = Visibility.Hidden;
-            BNT_CheckLogin.Visibility = Visibility.Hidden;
-            BTN_Add.Visibility = Visibility.Hidden;
-            BTN_Remove.Visibility = Visibility.Hidden;
-            BTN_Change.Visibility = Visibility.Hidden;
+            BTN_CheckLogin.Visibility = Visibility.Hidden;
+            BTN_Login.Content = "Logout";
 
 
 
-            if ( checkLogin.loginOK == true)
-          
-            {
-               // BTN_Change.Visibility = Visibility.Visible;
+        }
 
-            }
-                else
-            {
-               // BTN_Change.Visibility = Visibility.Hidden;
+        // Mitarbeiter checkLoginandPassword = new Mitarbeiter();
+        Login loginchecker = new Login();
+        Produkte pr = new Produkte();
+        WindowsInteraction checkLogin = new WindowsInteraction();
+        ChangeDB remover = new ChangeDB(); 
+       
+        public MainWindow()
+        {
+           
 
+            InitializeComponent();
+            DG_Produkte.ItemsSource = pr.ShowProdukteTable();
+           
+            HideLogin();
 
-            }
+            //LB_Passwort.Visibility = Visibility.Hidden;
+            //LB_Username.Visibility = Visibility.Hidden;
+            //TB_Login.Visibility = Visibility.Hidden;
+            //TB_Password.Visibility = Visibility.Hidden;
+            //BNT_CheckLogin.Visibility = Visibility.Hidden;
+            //BTN_Add.Visibility = Visibility.Hidden;
+            //BTN_Remove.Visibility = Visibility.Hidden;
+            //BTN_Change.Visibility = Visibility.Hidden;
+            //TBox_rowRemove.Visibility = Visibility.Hidden;
+            //LB_Remove.Visibility = Visibility.Hidden;
+
         }
 
        
@@ -82,14 +112,7 @@ namespace Media_Experten_Produkte
 
         private void BTN_SearchbyID_Click(object sender, RoutedEventArgs e)
         {
-            //if(Not int)
-            //{
-            //    MessageBox.Show("Es mus ien Gaznzahl sein");
-
-            //}
-            //else
-            //{ }
-
+           
             int id = int.Parse(TBox_SearchID.Text);
 
             DG_Produkte.ItemsSource = pr.ShowSearchedResultID(id);
@@ -102,23 +125,17 @@ namespace Media_Experten_Produkte
         private void BTN_LoginMainWindow_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow LogIn = new LoginWindow();
-            LogIn.Show();
-            
-            
+            LogIn.Show();    
 
         }
 
    
 
-        private void BNT_Login_Click(object sender, RoutedEventArgs e)
+        private void BTN_Login_Click(object sender, RoutedEventArgs e)
         {
-            LB_Passwort.Visibility = Visibility.Visible;
-            LB_Username.Visibility = Visibility.Visible;
-            TB_Login.Visibility = Visibility.Visible;
-            TB_Password.Visibility = Visibility.Visible;
-            BNT_CheckLogin.Visibility = Visibility.Visible;
-          
-
+            ShowLogin();
+      
+            
         }
 
     
@@ -146,7 +163,7 @@ namespace Media_Experten_Produkte
 
         }
 
-        private void BNT_CheckLogin_Click(object sender, RoutedEventArgs e)
+        private void BTN_CheckLogin_Click(object sender, RoutedEventArgs e)
         {
             string login = TB_Login.Text;
             string password = TB_Password.Text;
@@ -161,13 +178,13 @@ namespace Media_Experten_Produkte
             //else { MessageBox.Show("Wrong"); };
 
 
-           if( loginchecker.checkLoginandPassword(login, password))
+           if( loginchecker.CheckLoginandPassword(login, password))
             {
-                BTN_Add.Visibility = Visibility.Visible;
-                BTN_Remove.Visibility = Visibility.Visible;
-                BTN_Change.Visibility = Visibility.Visible;
+               ShowLoginOK();
+
             }
-            else { return;  };
+            else 
+            { return;  };
 
 
 
@@ -191,6 +208,20 @@ namespace Media_Experten_Produkte
             changeWindow.Show();
 
         }
+
+        private void BTN_Remove_Click(object sender, RoutedEventArgs e)
+        {
+            int id = int.Parse(TBox_rowRemove.Text);
+            remover.Removerow(id);
+        }
+
+        private void BTN_Add_Click(object sender, RoutedEventArgs e)
+        {
+            AddWindow addWindow = new AddWindow();
+            addWindow.Show();
+        }
+
+       
     }
 }
 
