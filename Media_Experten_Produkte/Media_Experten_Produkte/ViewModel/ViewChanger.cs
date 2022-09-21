@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Media_Experten_Produkte
+namespace Media_Experten_Produkte.ViewModel
 {
     internal class ViewChanger : MainWindow
     {

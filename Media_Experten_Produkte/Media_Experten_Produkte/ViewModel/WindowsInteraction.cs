@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Media_Experten_Produkte
+namespace Media_Experten_Produkte.ViewModel
 {
-    
+
     internal class WindowsInteraction
     {
-      //  public bool loginOK;
-     //   public bool getLoginOK()
-       //     if()
+        //  public bool loginOK;
+        //   public bool getLoginOK()
+        //     if()
 
 
     }

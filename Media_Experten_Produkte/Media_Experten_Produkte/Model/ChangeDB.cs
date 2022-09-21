@@ -8,11 +8,11 @@ using System.Data;
 using System.Windows;
 using Microsoft.Data.SqlClient;
 
-namespace Media_Experten_Produkte
+namespace Media_Experten_Produkte.Model
 {
     public class ChangeDB
     {
-        public void Removerow (int id)
+        public void Removerow(int id)
         {
             // This Method will completely remove one row orienting on the id
             //it will be executed after BTN_Remove Button click and ID value comes from TBox_rewRemove
@@ -36,10 +36,10 @@ namespace Media_Experten_Produkte
 
 
         }
-        public void Addvalues(int produktID, string produktName, string produktProducer, int produktPreis, int produktBestand,  string produktTyp)
+        public void Addvalues(int produktID, string produktName, string produktProducer, int produktPreis, int produktBestand, string produktTyp)
         {
             //This Method will take values from TBoxes and 
-            string sqlString2 = "INSERT INTO dbo.Produkte (ProduktID, ProduktName, ProduktProducer, ProduktPreiss, ProduktBestend, ProduktTyp) values ( " + produktID + ",'" + produktName + "', '"+produktProducer+"' ," + produktPreis + "," + produktBestand + ", '" + produktTyp + "') ";
+            string sqlString2 = "INSERT INTO dbo.Produkte (ProduktID, ProduktName, ProduktProducer, ProduktPreiss, ProduktBestend, ProduktTyp) values ( " + produktID + ",'" + produktName + "', '" + produktProducer + "' ," + produktPreis + "," + produktBestand + ", '" + produktTyp + "') ";
             //string sqlString3 = "INSERT INTO dbo.Produkte(ProduktID,	ProduktName,ProduktPreis, ProduktQuantity,ProduktSize,ProduktTyp)values(5, 'EX-200x', 1399, 3, 'L', 1); ";
             string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True";
             try
@@ -54,9 +54,9 @@ namespace Media_Experten_Produkte
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
-                
+
             }
-            
+
         }
 
         private bool Check_if_null(string costam)
@@ -158,7 +158,7 @@ namespace Media_Experten_Produkte
             SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
             try
             {
-              
+
                 string sqlString = "UPDATE dbo.Produkte SET ProduktName = @produktName, ProduktProducer = @producer, ProduktPreiss = @preis, ProduktBestend = @bestand, ProduktTyp = @typ  WHERE ProduktID = @mnr;";
                 con.Open();
                 SqlCommand sqlCommand = new SqlCommand(sqlString, con);
@@ -185,11 +185,11 @@ namespace Media_Experten_Produkte
                     Console.WriteLine("Fehler beim  ändern!");
                 }
 
-            } 
+            }
             catch (SqlException error)
             {
                 MessageBox.Show(error.Message);
-            } 
+            }
             con.Close();
 
 

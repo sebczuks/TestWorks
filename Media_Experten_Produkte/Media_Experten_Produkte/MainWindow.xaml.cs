@@ -3,6 +3,8 @@
 
 
 
+using Media_Experten_Produkte.Model;
+using Media_Experten_Produkte.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +23,10 @@ using System.Windows.Shapes;
 
 
 
+
 namespace Media_Experten_Produkte
 {
-  
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -74,7 +77,7 @@ namespace Media_Experten_Produkte
 
         }
 
-        // Mitarbeiter checkLoginandPassword = new Mitarbeiter();
+        Mitarbeiter checkLoginandPassword = new Mitarbeiter();
         Login loginchecker = new Login();
         Produkte pr = new Produkte();
         WindowsInteraction checkLogin = new WindowsInteraction();

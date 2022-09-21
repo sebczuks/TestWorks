@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using System.Windows;
 
-namespace Media_Experten_Produkte
+namespace Media_Experten_Produkte.ViewModel
 {
-    
+
     public class GUIBehavior : MainWindow
     {
 
-       
+
 
         public int GetIntValue(int id, string name)
         {
@@ -20,12 +20,12 @@ namespace Media_Experten_Produkte
             conn.Open();
             string sqlget = "SELECT " + name + " FROM dbo.Produkte WHERE ProduktID = " + id + ";";
             int get;
-            
-           
-           // strSQL = "SELECT * FROM mitglieder WHERE mitglieds_nr = @mnr;";
+
+
+            // strSQL = "SELECT * FROM mitglieder WHERE mitglieds_nr = @mnr;";
             SqlCommand cmd = new SqlCommand(sqlget, conn);
-           
-           // SqlDataReader reader = cmd.ExecuteReader();
+
+            // SqlDataReader reader = cmd.ExecuteReader();
             using (var reader = cmd.ExecuteReader())
             {
                 reader.Read();
@@ -34,11 +34,11 @@ namespace Media_Experten_Produkte
             conn.Close();
             return get;
 
-           
-            
+
+
         }
 
-        public string GetValue (int id, string name)
+        public string GetValue(int id, string name)
         {
             SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
 
@@ -60,6 +60,6 @@ namespace Media_Experten_Produkte
 
         }
 
-   
+
     }
 }

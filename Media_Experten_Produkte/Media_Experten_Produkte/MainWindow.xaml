@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Media_Experten_Produkte"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1080">
+        Title="MainWindow" Height="772" Width="1080">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="Black"/>
-            <GradientStop Color="White" Offset="1"/>
+            <GradientStop Color="#FF313030" Offset="0"/>
+            <GradientStop Color="#FFABB3B5" Offset="0.619"/>
         </LinearGradientBrush>
     </Window.Background>
     <Grid Margin="20" Opacity="0.99">
@@ -94,20 +94,32 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button x:Name="BTN_Add" Content="HINZU&#xD;&#xA;FÜGEN" HorizontalAlignment="Left" Margin="43,489,0,0" VerticalAlignment="Top" Height="75" Width="75" Click="BTN_Add_Click" >
+        <Button x:Name="BTN_Add" Content="HINZU&#xD;&#xA;FÜGEN" HorizontalAlignment="Left" Margin="30,489,0,0" VerticalAlignment="Top" Height="60" Width="75" Click="BTN_Add_Click" >
 
             <Button.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
+                    <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF504F4F"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
         </Button>
-        <Button x:Name="BTN_Remove" Content="LÖSCHEN" HorizontalAlignment="Left" Margin="167,585,0,0" VerticalAlignment="Top" Height="38" Width="74" Click="BTN_Remove_Click" >
+        <Button x:Name="BTN_Remove" Content="LÖSCHEN" HorizontalAlignment="Left" Margin="102,623,0,0" VerticalAlignment="Top" Height="38" Width="74" Click="BTN_Remove_Click" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF504F4F"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
         </Button>
 
         <ComboBox x:Name="CBox_Producers" HorizontalAlignment="Left" Margin="98,346,0,0" VerticalAlignment="Top" Width="120">
@@ -118,7 +130,7 @@
             <ComboBoxItem>Sony</ComboBoxItem>
             <ComboBoxItem>Miele</ComboBoxItem>
             <ComboBoxItem>LG</ComboBoxItem>
-            
+
 
 
 
@@ -142,17 +154,23 @@
 
 
         </ComboBox>
-        <Button x:Name="BTN_Change" Content="BEARBEITEN" HorizontalAlignment="Left" Margin="166,488,0,0" VerticalAlignment="Top" Height="76" Width="75" Click="BTN_Change_Click" >
+        <Button x:Name="BTN_Change" Content="BEARBEITEN" HorizontalAlignment="Left" Margin="145,489,0,0" VerticalAlignment="Top" Height="60" Width="75" Click="BTN_Change_Click" >
 
             <Button.Resources>
                 <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"/>
+                    <Setter Property="CornerRadius" Value="8"/>
                 </Style>
             </Button.Resources>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF504F4F"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
         </Button>
-        <Label x:Name="LB_Remove" Content="Zeile nr: " HorizontalAlignment="Left" Margin="30,586,0,0" VerticalAlignment="Top" Width="82" FontSize="20"/>
-        <TextBox x:Name="TBox_rowRemove" HorizontalAlignment="Left" Margin="112,590,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" FontSize="20"/>
+        <Label x:Name="LB_Remove" Content="Zeile nr: " HorizontalAlignment="Left" Margin="19,585,0,0" VerticalAlignment="Top" Width="82" FontSize="20"/>
+        <TextBox x:Name="TBox_rowRemove" HorizontalAlignment="Left" Margin="102,589,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" FontSize="20"/>
         <Slider x:Name="Slider_Low"  HorizontalAlignment="Left" Margin="-2,438,0,0" VerticalAlignment="Top" Width="120" TickFrequency="10" Maximum="500" SmallChange="50" TickPlacement="TopLeft" LargeChange="10"/>
-        <Slider x:Name="Slider_High"  HorizontalAlignment="Left" Margin="129,438,0,0" VerticalAlignment="Top" Width="120" TickFrequency="10" Maximum="2500" SmallChange="50" TickPlacement="TopLeft" LargeChange="25" Minimum="500" Value="500"/>
+        <Slider x:Name="Slider_High"  HorizontalAlignment="Left" Margin="129,438,0,0" VerticalAlignment="Top" Width="120" TickFrequency="10" Maximum="2500" SmallChange="50" TickPlacement="TopLeft" LargeChange="25" Minimum="500" Value="2500"/>
     </Grid>
 </Window>

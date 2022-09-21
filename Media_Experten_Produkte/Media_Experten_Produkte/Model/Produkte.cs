@@ -10,7 +10,7 @@ using Microsoft.Data.Sql;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace Media_Experten_Produkte
+namespace Media_Experten_Produkte.Model
 {
     public class Produkte
     {
@@ -41,7 +41,7 @@ namespace Media_Experten_Produkte
                 //SqlConnection sqlConnection = new SqlConnection(_connectionString);
                 con.Open();
 
-               // MessageBox.Show("Liste unserer Produkte");
+                // MessageBox.Show("Liste unserer Produkte");
                 SqlCommand sqlCommand = new SqlCommand(sqlString1, con);
                 SqlCommand sqlCommand2 = new SqlCommand(sqlStringforCustomer, con);
                 sqlCommand2.ExecuteNonQuery();
@@ -140,10 +140,10 @@ namespace Media_Experten_Produkte
 
             string sqlQuery = "SELECT * FROM dbo.Produkte WHERE ProduktProducer = ";
 
-           string sqlselect = "SELECT  'Produkt Name' , 'Produkt Producer', 'Produkt Preis' , 'Produkt Typ', 'ProduktLieferdatum' FROM dbo.Produkte WHERE 'Produkt Producer' = '" + producer + "' AND 'Produkt Typ' = '" + type + "' AND 'Prpdukt Preis' BETEWEN " + preisLow + "AND" + preisHigh + ";";               
+            string sqlselect = "SELECT  'Produkt Name' , 'Produkt Producer', 'Produkt Preis' , 'Produkt Typ', 'ProduktLieferdatum' FROM dbo.Produkte WHERE 'Produkt Producer' = '" + producer + "' AND 'Produkt Typ' = '" + type + "' AND 'Prpdukt Preis' BETEWEN " + preisLow + "AND" + preisHigh + ";";
 
             SqlConnection con = new SqlConnection();
-             DataView dataView = new DataView();
+            DataView dataView = new DataView();
             return dataView;
         }
 
@@ -170,8 +170,8 @@ namespace Media_Experten_Produkte
         {
 
             SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
-           // string sqlString1 = "SELECT * FROM dbo.Produkte Where ProduktID =" + id + ";";
-            string sqlString2 = "SELECT * FROM dbo.Produkte Where ProduktPreiss BETWEEN " +low+ "AND " +high+";";
+            // string sqlString1 = "SELECT * FROM dbo.Produkte Where ProduktID =" + id + ";";
+            string sqlString2 = "SELECT * FROM dbo.Produkte Where ProduktPreiss BETWEEN " + low + "AND " + high + ";";
 
 
             // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";

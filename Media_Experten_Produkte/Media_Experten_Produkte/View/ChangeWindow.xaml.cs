@@ -14,7 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using Microsoft.Data.SqlClient;
-
+using Media_Experten_Produkte.Model;
+using Media_Experten_Produkte.ViewModel;
 
 namespace Media_Experten_Produkte
 {
@@ -57,6 +58,9 @@ namespace Media_Experten_Produkte
 
         private void TBox_changeID_TextChanged(object sender, TextChangedEventArgs e)
         {
+
+            //   TO DO 
+            //-Check if not int 
            
             int id = int.Parse(TBox_changeID.Text);
 
