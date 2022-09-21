@@ -9,9 +9,11 @@ using System.Windows;
 namespace Media_Experten_Produkte
 {
     
-    internal class GUIBehavior
+    public class GUIBehavior : MainWindow
     {
-      
+
+       
+
         public int GetIntValue(int id, string name)
         {
             SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");

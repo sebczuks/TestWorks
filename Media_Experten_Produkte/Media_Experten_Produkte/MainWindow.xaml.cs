@@ -79,26 +79,19 @@ namespace Media_Experten_Produkte
         Produkte pr = new Produkte();
         WindowsInteraction checkLogin = new WindowsInteraction();
         ChangeDB remover = new ChangeDB(); 
+      //  ViewChanger changer = new ViewChanger();
        
         public MainWindow()
         {
            
 
             InitializeComponent();
-            DG_Produkte.ItemsSource = pr.ShowProdukteTable();
-           
+            DG_Produkte.ItemsSource = pr.ShowProdukteTableforCustomer();
+            DG_Produkte.FontSize = 30;
+
+
             HideLogin();
 
-            //LB_Passwort.Visibility = Visibility.Hidden;
-            //LB_Username.Visibility = Visibility.Hidden;
-            //TB_Login.Visibility = Visibility.Hidden;
-            //TB_Password.Visibility = Visibility.Hidden;
-            //BNT_CheckLogin.Visibility = Visibility.Hidden;
-            //BTN_Add.Visibility = Visibility.Hidden;
-            //BTN_Remove.Visibility = Visibility.Hidden;
-            //BTN_Change.Visibility = Visibility.Hidden;
-            //TBox_rowRemove.Visibility = Visibility.Hidden;
-            //LB_Remove.Visibility = Visibility.Hidden;
 
         }
 
@@ -106,7 +99,7 @@ namespace Media_Experten_Produkte
 
         private void BTN_ShowProdukte_Click_1(object sender, RoutedEventArgs e)
         {
-            DG_Produkte.ItemsSource = pr.ShowProdukteTable();
+            DG_Produkte.ItemsSource = pr.ShowProdukteTableafterLogin();
 
         }
 
@@ -155,6 +148,12 @@ namespace Media_Experten_Produkte
 
         private void BTN_SearchbyProducer_Click(object sender, RoutedEventArgs e)
         {
+            string CBoxvalue1, CBoxvalue2;
+            CBoxvalue1 = CBox_Producers.Text;
+            CBoxvalue2 = CBox_Types.Text;
+            MessageBox.Show(CBoxvalue1 +  CBoxvalue2);
+        
+
 
         }
 
@@ -180,7 +179,8 @@ namespace Media_Experten_Produkte
 
            if( loginchecker.CheckLoginandPassword(login, password))
             {
-               ShowLoginOK();
+              
+              ShowLoginOK();
 
             }
             else 

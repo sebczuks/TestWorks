@@ -23,27 +23,52 @@ namespace Media_Experten_Produkte
 
         public int MyProperty { get; set; }
 
-        public void Remove(string what, int position)
+
+
+        public DataView ShowProdukteTableforCustomer()
         {
-            if (position == 0)
+            //This Method will connect to DB and get DataTable with all records
+
+            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
+            string sqlString1 = "SELECT * FROM dbo.Produkte";
+            var sqlStringforCustomer = "SELECT ProduktName AS 'Name' , ProduktTyp  AS 'Typ' , ProduktProducer AS 'Hersteller' , ProduktPreiss AS 'Preis'   FROM dbo.Produkte";
+
+
+            // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
+
+            try
             {
-                this.ProductCatID = 0; ProductSize = null;
+                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
+                con.Open();
+
+               // MessageBox.Show("Liste unserer Produkte");
+                SqlCommand sqlCommand = new SqlCommand(sqlString1, con);
+                SqlCommand sqlCommand2 = new SqlCommand(sqlStringforCustomer, con);
+                sqlCommand2.ExecuteNonQuery();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand2);
+                DataTable dataTable = new DataTable(sqlString1);
+                dataAdapter.Fill(dataTable);
+                return dataTable.DefaultView;
+                con.Close();
             }
-            else
+
+            catch (SqlException ex)
+
             {
-
-                MessageBox.Show("NO");
-
+                MessageBox.Show(ex.Message);
+                DataView dataView = new DataView();
+                return dataView;
             }
 
         }
 
-        public DataView ShowProdukteTable()
+        public DataView ShowProdukteTableafterLogin()
         {
-            //This Method will connect to DB and get DataTable with 
+            //This Method will connect to DB and get DataTable with all records
 
             SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
             string sqlString1 = "SELECT * FROM dbo.Produkte";
+            var sqlStringforCustomer = "SELECT ProduktName AS 'Produkt Name', ProduktProducer, ProduktPreiss AS 'Produkt Preis' , ProduktTyp  AS 'Produkt Typ'  FROM dbo.Produkte";
 
 
             // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
@@ -54,9 +79,10 @@ namespace Media_Experten_Produkte
                 con.Open();
 
                 MessageBox.Show("Liste unserer Produkte");
-                SqlCommand sqlCommand = new SqlCommand(sqlString1, con);
-                sqlCommand.ExecuteNonQuery();
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+                SqlCommand sqlCommand1 = new SqlCommand(sqlString1, con);
+                SqlCommand sqlCommand2 = new SqlCommand(sqlStringforCustomer, con);
+                sqlCommand1.ExecuteNonQuery();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand1);
                 DataTable dataTable = new DataTable(sqlString1);
                 dataAdapter.Fill(dataTable);
                 return dataTable.DefaultView;
@@ -64,6 +90,7 @@ namespace Media_Experten_Produkte
             }
 
             catch (SqlException ex)
+
             {
                 MessageBox.Show(ex.Message);
                 DataView dataView = new DataView();
@@ -93,11 +120,6 @@ namespace Media_Experten_Produkte
 
                 dataAdapter.Fill(dataTable);
                 return dataTable.DefaultView;
-
-
-
-
-
                 con.Close();
             }
 
@@ -108,6 +130,21 @@ namespace Media_Experten_Produkte
                 return dataView;
             }
 
+        }
+
+        public DataView Search(string producer, string type, int preisLow, int preisHigh)
+        {
+            // This Method will search and display in DataView Data
+            //check if not empty
+            // connect and enforce sql query 
+
+            string sqlQuery = "SELECT * FROM dbo.Produkte WHERE ProduktProducer = ";
+
+           string sqlselect = "SELECT  'Produkt Name' , 'Produkt Producer', 'Produkt Preis' , 'Produkt Typ', 'ProduktLieferdatum' FROM dbo.Produkte WHERE 'Produkt Producer' = '" + producer + "' AND 'Produkt Typ' = '" + type + "' AND 'Prpdukt Preis' BETEWEN " + preisLow + "AND" + preisHigh + ";";               
+
+            SqlConnection con = new SqlConnection();
+             DataView dataView = new DataView();
+            return dataView;
         }
 
         public DataView ShowSearchedResultName(string name)

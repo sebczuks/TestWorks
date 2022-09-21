@@ -32,8 +32,8 @@ namespace Media_Experten_Produkte
         {
             InitializeComponent();
 
-            
-            DataGrid_allProducts.ItemsSource =  produkte.ShowProdukteTable();
+
+            DataGrid_allProducts.ItemsSource = produkte.ShowProdukteTableafterLogin();
 
         }
 
@@ -52,7 +52,7 @@ namespace Media_Experten_Produkte
 
 
             change.Change(mne, name, producer, preis, bestand, typ);
-            DataGrid_allProducts.ItemsSource = produkte.ShowProdukteTable();
+            DataGrid_allProducts.ItemsSource = produkte.ShowProdukteTableafterLogin();
         }
 
         private void TBox_changeID_TextChanged(object sender, TextChangedEventArgs e)

@@ -87,7 +87,7 @@
             </Button.Resources>
 
         </Button>
-        <TextBox x:Name="TBox_SearchPreisHigh" HorizontalAlignment="Left" Margin="150,408,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="32" Height="20">
+        <TextBox x:Name="TBox_SearchPreisHigh" Text="{Binding ElementName=Slider_High, Path=Value}" HorizontalAlignment="Left" Margin="150,408,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="32" Height="20">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -114,13 +114,11 @@
             <ComboBoxItem>Amica</ComboBoxItem>
             <ComboBoxItem>Samsung</ComboBoxItem>
             <ComboBoxItem>Siemens</ComboBoxItem>
-            <ComboBoxItem>Samsung</ComboBoxItem>
+            <ComboBoxItem>Bosch</ComboBoxItem>
             <ComboBoxItem>Sony</ComboBoxItem>
             <ComboBoxItem>Miele</ComboBoxItem>
-            <ComboBoxItem>Other</ComboBoxItem>
-            <ComboBoxItem>Other</ComboBoxItem>
-            <ComboBoxItem>Other</ComboBoxItem>
-            <ComboBoxItem>Other</ComboBoxItem>
+            <ComboBoxItem>LG</ComboBoxItem>
+            
 
 
 
@@ -155,5 +153,6 @@
         <Label x:Name="LB_Remove" Content="Zeile nr: " HorizontalAlignment="Left" Margin="30,586,0,0" VerticalAlignment="Top" Width="82" FontSize="20"/>
         <TextBox x:Name="TBox_rowRemove" HorizontalAlignment="Left" Margin="112,590,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" FontSize="20"/>
         <Slider x:Name="Slider_Low"  HorizontalAlignment="Left" Margin="-2,438,0,0" VerticalAlignment="Top" Width="120" TickFrequency="10" Maximum="500" SmallChange="50" TickPlacement="TopLeft" LargeChange="10"/>
+        <Slider x:Name="Slider_High"  HorizontalAlignment="Left" Margin="129,438,0,0" VerticalAlignment="Top" Width="120" TickFrequency="10" Maximum="2500" SmallChange="50" TickPlacement="TopLeft" LargeChange="25" Minimum="500" Value="500"/>
     </Grid>
 </Window>

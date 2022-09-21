@@ -10,12 +10,13 @@ using Microsoft.Data.SqlClient;
 
 namespace Media_Experten_Produkte
 {
-    internal class ChangeDB
+    public class ChangeDB
     {
-        // SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
-       // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True";
         public void Removerow (int id)
         {
+            // This Method will completely remove one row orienting on the id
+            //it will be executed after BTN_Remove Button click and ID value comes from TBox_rewRemove
+
             string sqlremove = "DELETE FROM dbo.Produkte WHERE ProduktID = " + id + ";";
             string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True";
             try
@@ -37,6 +38,7 @@ namespace Media_Experten_Produkte
         }
         public void Addvalues(int produktID, string produktName, string produktProducer, int produktPreis, int produktBestand,  string produktTyp)
         {
+            //This Method will take values from TBoxes and 
             string sqlString2 = "INSERT INTO dbo.Produkte (ProduktID, ProduktName, ProduktProducer, ProduktPreiss, ProduktBestend, ProduktTyp) values ( " + produktID + ",'" + produktName + "', '"+produktProducer+"' ," + produktPreis + "," + produktBestand + ", '" + produktTyp + "') ";
             //string sqlString3 = "INSERT INTO dbo.Produkte(ProduktID,	ProduktName,ProduktPreis, ProduktQuantity,ProduktSize,ProduktTyp)values(5, 'EX-200x', 1399, 3, 'L', 1); ";
             string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True";
