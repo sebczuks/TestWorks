@@ -40,6 +40,7 @@ namespace Media_Experten_Produkte.ViewModel
 
         public string GetValue(int id, string name)
         {
+            // This Method will update T_Box Text on TBox Event
             SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
 
             string sqlget = "SELECT " + name + " FROM dbo.Produkte WHERE ProduktID = " + id + ";";

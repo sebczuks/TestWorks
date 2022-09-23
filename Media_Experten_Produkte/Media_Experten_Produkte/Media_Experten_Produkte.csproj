@@ -8,11 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="lupe-transparent.png" />
+    <None Remove="lupe.png" />
+    <None Remove="Reload.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Img\" />
+    <Resource Include="lupe-transparent.png" />
+    <Resource Include="Img\lupe.png" />
+    <Resource Include="Reload.png" />
   </ItemGroup>
 
 </Project>

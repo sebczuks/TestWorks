@@ -84,6 +84,7 @@ namespace Media_Experten_Produkte.Model
                 sqlCommand1.ExecuteNonQuery();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand1);
                 DataTable dataTable = new DataTable(sqlString1);
+               
                 dataAdapter.Fill(dataTable);
                 return dataTable.DefaultView;
                 con.Close();
@@ -132,19 +133,44 @@ namespace Media_Experten_Produkte.Model
 
         }
 
-        public DataView Search(string producer, string type, int preisLow, int preisHigh)
+        public DataView Search(string producer, string type, int low, int high) //
         {
+            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
             // This Method will search and display in DataView Data
             //check if not empty
             // connect and enforce sql query 
 
             string sqlQuery = "SELECT * FROM dbo.Produkte WHERE ProduktProducer = ";
 
-            string sqlselect = "SELECT  'Produkt Name' , 'Produkt Producer', 'Produkt Preis' , 'Produkt Typ', 'ProduktLieferdatum' FROM dbo.Produkte WHERE 'Produkt Producer' = '" + producer + "' AND 'Produkt Typ' = '" + type + "' AND 'Prpdukt Preis' BETEWEN " + preisLow + "AND" + preisHigh + ";";
+           // string sqlselect = "SELECT  'Produkt Name' , 'Produkt Producer', 'Produkt Preis' , 'Produkt Typ', 'ProduktLieferdatum' FROM dbo.Produkte WHERE 'Produkt Producer' = '" + producer + "' AND 'Produkt Typ' = '" + type + "' AND 'Prpdukt Preis' BETEWEN " + preisLow + "AND" + preisHigh + ";";
+            string SELECT = "SELECT ProduktName AS 'Produkt Name', ProduktProducer, ProduktPreiss AS 'Produkt Preis' , ProduktTyp  AS 'Produkt Typ'  FROM dbo.Produkte WHERE ProduktPreiss BETWEEN " + low + " AND " + high + " AND  ProduktProducer = '" + producer + "'  AND ProduktTyp = '" + type + "' ;";
+            try
+            {
+                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
+                con.Open();
 
-            SqlConnection con = new SqlConnection();
-            DataView dataView = new DataView();
-            return dataView;
+                // MessageBox.Show("Liste unserer Produkte");
+                SqlCommand sqlCommand = new SqlCommand(SELECT, con);
+                sqlCommand.ExecuteNonQuery();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+                DataTable dataTable = new DataTable(SELECT);
+
+                dataAdapter.Fill(dataTable);
+                return dataTable.DefaultView;
+
+
+
+
+
+                con.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                DataView dataView = new DataView();
+                return dataView;
+            }
         }
 
         public DataView ShowSearchedResultName(string name)

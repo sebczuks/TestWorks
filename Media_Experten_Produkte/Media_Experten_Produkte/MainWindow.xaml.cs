@@ -45,6 +45,8 @@ namespace Media_Experten_Produkte
             BTN_Change.Visibility = Visibility.Hidden;
             TBox_rowRemove.Visibility = Visibility.Hidden;
             LB_Remove.Visibility = Visibility.Hidden;
+            LB_Dubistals.Visibility = Visibility.Hidden;
+            LB_UserNameMainWindow.Visibility = Visibility.Hidden;
 
         }
 
@@ -55,11 +57,13 @@ namespace Media_Experten_Produkte
             TB_Login.Visibility = Visibility.Visible;
             TB_Password.Visibility = Visibility.Visible;
             BTN_CheckLogin.Visibility = Visibility.Visible;
+          
 
         }
 
-        public void ShowLoginOK()
-        {
+
+        public void ShowifLoginOK()
+        {  
             BTN_Add.Visibility = Visibility.Visible;
             BTN_Remove.Visibility = Visibility.Visible;
             BTN_Change.Visibility = Visibility.Visible;
@@ -71,6 +75,8 @@ namespace Media_Experten_Produkte
             TB_Login.Visibility = Visibility.Hidden;
             TB_Password.Visibility = Visibility.Hidden;
             BTN_CheckLogin.Visibility = Visibility.Hidden;
+            LB_UserNameMainWindow.Visibility = Visibility.Visible;
+            LB_Dubistals.Visibility = Visibility.Visible;
             BTN_Login.Content = "Logout";
 
 
@@ -82,7 +88,7 @@ namespace Media_Experten_Produkte
         Produkte pr = new Produkte();
         WindowsInteraction checkLogin = new WindowsInteraction();
         ChangeDB remover = new ChangeDB(); 
-      //  ViewChanger changer = new ViewChanger();
+     //   ViewChanger changer = new ViewChanger();
        
         public MainWindow()
         {
@@ -90,7 +96,7 @@ namespace Media_Experten_Produkte
 
             InitializeComponent();
             DG_Produkte.ItemsSource = pr.ShowProdukteTableforCustomer();
-            DG_Produkte.FontSize = 30;
+            DG_Produkte.FontSize = 18;
 
 
             HideLogin();
@@ -147,6 +153,7 @@ namespace Media_Experten_Produkte
         private void BTN_SearchbyTyp_Click(object sender, RoutedEventArgs e)
         {
 
+            DG_Produkte.ItemsSource = pr.Search(CBox_Producers.Text, CBox_Types.Text, int.Parse(TBox_SearchPreisLow.Text), int.Parse(TBox_SearchPreisHigh.Text) );
         }
 
         private void BTN_SearchbyProducer_Click(object sender, RoutedEventArgs e)
@@ -182,8 +189,8 @@ namespace Media_Experten_Produkte
 
            if( loginchecker.CheckLoginandPassword(login, password))
             {
-              
-              ShowLoginOK();
+              ShowifLoginOK(); 
+             
 
             }
             else 
@@ -198,6 +205,8 @@ namespace Media_Experten_Produkte
             //BNT_CheckLogin.Visibility = Visibility.Visible;
 
         }
+
+       
 
         private void ListBProducerList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

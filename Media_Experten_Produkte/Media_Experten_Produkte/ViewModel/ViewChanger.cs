@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
+
 namespace Media_Experten_Produkte.ViewModel
 {
     internal class ViewChanger : MainWindow
     {
         public void ShowLoginOK()
         {
+            // This Method will make Employee-Buttons visible
+            // will be used in MainWindow when LoginButton and loginInput will be correct
+
             BTN_Add.Visibility = Visibility.Visible;
             BTN_Remove.Visibility = Visibility.Visible;
             BTN_Change.Visibility = Visibility.Visible;

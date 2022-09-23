@@ -58,17 +58,47 @@ namespace Media_Experten_Produkte.Model
             }
 
         }
+        public void Change(int mnr, string name, string producer, int preis, int bestand, string typ)
+        {   // This Method will get set of values and update Data Base Produkte
+            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
+            try
+            {
 
-        private bool Check_if_null(string costam)
-        {
-            if (costam == null)
-            {
-                return true;
+                string sqlString = "UPDATE dbo.Produkte SET ProduktName = @produktName, ProduktProducer = @producer, ProduktPreiss = @preis, ProduktBestend = @bestand, ProduktTyp = @typ  WHERE ProduktID = @mnr;";
+                con.Open();
+                SqlCommand sqlCommand = new SqlCommand(sqlString, con);
+                //string[] values = ("@produktName", "@producer", "@preis", "@bestand", "@typ", "@mnr");
+                //string position; 
+                //for (int i = 0; i < mnr; i++)
+                //    {
+                //    sqlCommand.Parameters.AddWithValue(values[i], position);
+                //}
+                // Parameter mit Werten verkn pfen
+                sqlCommand.Parameters.AddWithValue("@produktName", name);
+                sqlCommand.Parameters.AddWithValue("@producer", producer);
+                sqlCommand.Parameters.AddWithValue("@preis", preis);
+                sqlCommand.Parameters.AddWithValue("@bestand", bestand);
+                sqlCommand.Parameters.AddWithValue("@typ", typ);
+                sqlCommand.Parameters.AddWithValue("@mnr", mnr);
+
+                if (sqlCommand.ExecuteNonQuery() > 0)
+                {
+                    Console.WriteLine("Daten erfolgreich geändert!");
+                }
+                else
+                {
+                    Console.WriteLine("Fehler beim  ändern!");
+                }
+
             }
-            else
+            catch (SqlException error)
             {
-                return false;
+                MessageBox.Show(error.Message);
             }
+            con.Close();
+
+
+
         }
 
         public string getSQLqueryr(int id, string[] values)
@@ -153,48 +183,7 @@ namespace Media_Experten_Produkte.Model
             return;
         }
 
-        public void Change(int mnr, string name, string producer, int preis, int bestand, string typ)
-        {
-            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
-            try
-            {
-
-                string sqlString = "UPDATE dbo.Produkte SET ProduktName = @produktName, ProduktProducer = @producer, ProduktPreiss = @preis, ProduktBestend = @bestand, ProduktTyp = @typ  WHERE ProduktID = @mnr;";
-                con.Open();
-                SqlCommand sqlCommand = new SqlCommand(sqlString, con);
-                //string[] values = ("@produktName", "@producer", "@preis", "@bestand", "@typ", "@mnr");
-                //string position; 
-                //for (int i = 0; i < mnr; i++)
-                //    {
-                //    sqlCommand.Parameters.AddWithValue(values[i], position);
-                //}
-                // Parameter mit Werten verkn pfen
-                sqlCommand.Parameters.AddWithValue("@produktName", name);
-                sqlCommand.Parameters.AddWithValue("@producer", producer);
-                sqlCommand.Parameters.AddWithValue("@preis", preis);
-                sqlCommand.Parameters.AddWithValue("@bestand", bestand);
-                sqlCommand.Parameters.AddWithValue("@typ", typ);
-                sqlCommand.Parameters.AddWithValue("@mnr", mnr);
-
-                if (sqlCommand.ExecuteNonQuery() > 0)
-                {
-                    Console.WriteLine("Daten erfolgreich geändert!");
-                }
-                else
-                {
-                    Console.WriteLine("Fehler beim  ändern!");
-                }
-
-            }
-            catch (SqlException error)
-            {
-                MessageBox.Show(error.Message);
-            }
-            con.Close();
-
-
-
-        }
+       
     }
 
 }
