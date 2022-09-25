@@ -34,7 +34,35 @@ namespace Media_Experten_Produkte.Model
             { return true; }
         }
 
-        public bool checkLoginandPassword(string login, string password)
+        public string GetUserName(string login)
+        {
+            SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
+            string sqlgetuserName = "SELECT Name FROM dbo.MitarbieterListe WHERE Login = '" + login + "';";
+            SqlCommand commandgetName = new SqlCommand(sqlgetuserName, conn);
+            string namefromDB = " ";
+
+
+            conn.Open();
+            try
+            {
+                using (var reader = commandgetName.ExecuteReader())
+                {
+                    reader.Read();
+                    namefromDB = reader.GetString(0);
+                    return namefromDB;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "Something went wrong");
+                return namefromDB;
+            }
+            conn.Close();
+           
+
+        }
+            public bool checkLoginandPassword(string login, string password)
         {
 
             SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");

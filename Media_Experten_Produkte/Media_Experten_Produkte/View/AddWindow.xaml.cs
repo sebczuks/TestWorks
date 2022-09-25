@@ -30,10 +30,10 @@ namespace Media_Experten_Produkte
         {
             string name = TBox_AddName.Text;
             int ID = int.Parse(TBox_AddID.Text);
-            string producer = TBox_AddProducer.Text;
+            string producer = CBox_ProducersAdd.Text;
             int preis = int.Parse(TBox_AddPreiss.Text);
             int bestand = int.Parse(TBox_AddBestand.Text);
-            string typ = TBox_AddTyp.Text;
+            string typ = CBox_TypesAdd.Text;
             adder.Addvalues(ID, name, producer, preis, bestand, typ);
 
         }

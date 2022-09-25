@@ -9,7 +9,7 @@ namespace Media_Experten_Produkte.ViewModel
 
     internal class WindowsInteraction
     {
-        //  public bool loginOK;
+         public bool loginOK = false;
         //   public bool getLoginOK()
         //     if()
 

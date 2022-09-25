@@ -44,19 +44,19 @@ namespace Media_Experten_Produkte.ViewModel
             SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
 
             string sqlget = "SELECT " + name + " FROM dbo.Produkte WHERE ProduktID = " + id + ";";
-            string set;
+            string get;
             //  string passwordfromDB;
-            SqlCommand commandgetname = new SqlCommand(sqlget, conn);
+            SqlCommand commandget = new SqlCommand(sqlget, conn);
             //SqlCommand commandgetPassword = new SqlCommand(sqlgetpassword, conn);
             conn.Open();
-            using (var reader = commandgetname.ExecuteReader())
+            using (var reader = commandget.ExecuteReader())
             {
                 reader.Read();
-                set = reader.GetString(0);
+                get = reader.GetString(0);
             }
 
             conn.Close();
-            return set;
+            return get;
 
 
         }

@@ -21,16 +21,16 @@ namespace Media_Experten_Produkte.Model
         public int ProductCatID { get; set; }
         public string ProductSize { get; set; }
 
-        public int MyProperty { get; set; }
+       
 
 
 
         public DataView ShowProdukteTableforCustomer()
         {
-            //This Method will connect to DB and get DataTable with all records
+            //This Method will connect to DB and get DataTable with basic records
 
             SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
-            string sqlString1 = "SELECT * FROM dbo.Produkte";
+           // string sqlString1 = "SELECT * FROM dbo.Produkte";
             var sqlStringforCustomer = "SELECT ProduktName AS 'Name' , ProduktTyp  AS 'Typ' , ProduktProducer AS 'Hersteller' , ProduktPreiss AS 'Preis'   FROM dbo.Produkte";
 
 
@@ -41,12 +41,12 @@ namespace Media_Experten_Produkte.Model
                 //SqlConnection sqlConnection = new SqlConnection(_connectionString);
                 con.Open();
 
-                // MessageBox.Show("Liste unserer Produkte");
-                SqlCommand sqlCommand = new SqlCommand(sqlString1, con);
+                 MessageBox.Show("Liste unserer Produkte - Kunde");
+              //  SqlCommand sqlCommand = new SqlCommand(sqlString1, con);
                 SqlCommand sqlCommand2 = new SqlCommand(sqlStringforCustomer, con);
                 sqlCommand2.ExecuteNonQuery();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand2);
-                DataTable dataTable = new DataTable(sqlString1);
+                DataTable dataTable = new DataTable(sqlStringforCustomer);
                 dataAdapter.Fill(dataTable);
                 return dataTable.DefaultView;
                 con.Close();
@@ -67,8 +67,8 @@ namespace Media_Experten_Produkte.Model
             //This Method will connect to DB and get DataTable with all records
 
             SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
-            string sqlString1 = "SELECT * FROM dbo.Produkte";
-            var sqlStringforCustomer = "SELECT ProduktName AS 'Produkt Name', ProduktProducer, ProduktPreiss AS 'Produkt Preis' , ProduktTyp  AS 'Produkt Typ'  FROM dbo.Produkte";
+            string sqlString1 = "SELECT ProduktID as ID, ProduktName AS 'Produkt Name', ProduktProducer AS 'Hersteller', ProduktPreiss AS 'Produkt Preis' , ProduktTyp  AS 'Produkt Typ', ProduktBestend AS 'Bestand'  FROM dbo.Produkte";
+            //var sqlStringforCustomer = "SELECT ProduktName AS 'Produkt Name', ProduktProducer, ProduktPreiss AS 'Produkt Preis' , ProduktTyp  AS 'Produkt Typ'  FROM dbo.Produkte";
 
 
             // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
@@ -80,7 +80,7 @@ namespace Media_Experten_Produkte.Model
 
                 MessageBox.Show("Liste unserer Produkte");
                 SqlCommand sqlCommand1 = new SqlCommand(sqlString1, con);
-                SqlCommand sqlCommand2 = new SqlCommand(sqlStringforCustomer, con);
+               // SqlCommand sqlCommand2 = new SqlCommand(sqlStringforCustomer, con);
                 sqlCommand1.ExecuteNonQuery();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand1);
                 DataTable dataTable = new DataTable(sqlString1);
@@ -143,7 +143,7 @@ namespace Media_Experten_Produkte.Model
             string sqlQuery = "SELECT * FROM dbo.Produkte WHERE ProduktProducer = ";
 
            // string sqlselect = "SELECT  'Produkt Name' , 'Produkt Producer', 'Produkt Preis' , 'Produkt Typ', 'ProduktLieferdatum' FROM dbo.Produkte WHERE 'Produkt Producer' = '" + producer + "' AND 'Produkt Typ' = '" + type + "' AND 'Prpdukt Preis' BETEWEN " + preisLow + "AND" + preisHigh + ";";
-            string SELECT = "SELECT ProduktName AS 'Produkt Name', ProduktProducer, ProduktPreiss AS 'Produkt Preis' , ProduktTyp  AS 'Produkt Typ'  FROM dbo.Produkte WHERE ProduktPreiss BETWEEN " + low + " AND " + high + " AND  ProduktProducer = '" + producer + "'  AND ProduktTyp = '" + type + "' ;";
+            string SELECT = "SELECT ProduktName AS 'Name', ProduktProducer AS Hersteller , ProduktPreiss AS 'Preis' , ProduktTyp  AS 'Typ'  FROM dbo.Produkte WHERE ProduktPreiss BETWEEN " + low + " AND " + high + " AND  ProduktProducer = '" + producer + "'  AND ProduktTyp = '" + type + "' ;";
             try
             {
                 //SqlConnection sqlConnection = new SqlConnection(_connectionString);
@@ -175,8 +175,34 @@ namespace Media_Experten_Produkte.Model
 
         public DataView ShowSearchedResultName(string name)
         {
-            DataView dataView = new DataView();
-            return dataView;
+            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
+            string sqlString1 = "SELECT ProduktName AS 'Name' , ProduktTyp AS 'Typ' , ProduktProducer AS 'Hersteller' , ProduktPreiss AS 'Preis' FROM dbo.Produkte Where ProduktName = '" + name + "' ;";
+
+
+            // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
+
+            try
+            {
+                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
+                con.Open();
+
+                // MessageBox.Show("Liste unserer Produkte");
+                SqlCommand sqlCommand = new SqlCommand(sqlString1, con);
+                sqlCommand.ExecuteNonQuery();
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
+                DataTable dataTable = new DataTable(sqlString1);
+
+                dataAdapter.Fill(dataTable);
+                return dataTable.DefaultView;
+                con.Close();
+            }
+
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                DataView dataView = new DataView();
+                return dataView;
+            }
         }
 
         public DataView ShowSearchedResultProducer(string producer)
@@ -188,6 +214,7 @@ namespace Media_Experten_Produkte.Model
 
         public DataView ShowSearchedResultTyp(string producer)
         {
+
             DataView dataView = new DataView();
             return dataView;
         }

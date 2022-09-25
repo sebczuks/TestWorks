@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Media_Experten_Produkte"
         mc:Ignorable="d"
-        Title="MainWindow" Height="772" Width="1080">
+        Title="Media EXPERTEN Produkt Katalog" Height="772" Width="1080">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF313030" Offset="0"/>
@@ -13,7 +13,7 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid Margin="20" Opacity="0.99">
-        <DataGrid x:Name="DG_Produkte" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="254,82,15,10" FontSize="18"/>
+        <DataGrid x:Name="DG_Produkte" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="254,82,10,10" FontSize="18"/>
         <TextBox x:Name="TBox_SearchID" HorizontalAlignment="Left" Margin="96,143,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="78" Height="20">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
@@ -33,7 +33,7 @@
             </Button.Background>
         </Button>
         <Label x:Name="LB_Searchby" Content="Suche nach:" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" FontSize="25"/>
-        <Label Content="ID" HorizontalAlignment="Left" Margin="0,137,0,0" VerticalAlignment="Top" FontSize="15" Height="30"/>
+        <Label x:Name="LB_ID" Content="ID" HorizontalAlignment="Left" Margin="0,137,0,0" VerticalAlignment="Top" FontSize="15" Height="30"/>
         <Button x:Name="BTN_SearchbyID" Content="" HorizontalAlignment="Left" Margin="220,143,0,0" VerticalAlignment="Top" Width="26" Click="BTN_SearchbyID_Click" Height="20" BorderBrush="{x:Null}">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -64,7 +64,7 @@
         </Button>
         <Label Content="HERSTELLER" HorizontalAlignment="Left" Margin="0,197,0,0" VerticalAlignment="Top" FontSize="15" Height="30"/>
         <Label Content="TYP" HorizontalAlignment="Left" Margin="0,227,0,0" VerticalAlignment="Top" FontSize="15" Height="30"/>
-        <Button x:Name="BTN_SearchbyTyp" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="220,262,0,0" VerticalAlignment="Top" Width="26" Height="20" Click="BTN_SearchbyTyp_Click" RenderTransformOrigin="0.5,1.577">
+        <Button x:Name="BTN_SearchbyTyp" Content="" HorizontalAlignment="Left" Margin="220,262,0,0" VerticalAlignment="Top" Width="26" Height="20" Click="BTN_SearchbyTyp_Click" RenderTransformOrigin="0.5,1.577">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -82,7 +82,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button x:Name="BTN_Login" Content="Login" HorizontalAlignment="Left" Margin="12,358,0,0" VerticalAlignment="Top" Width="69" Click="BTN_Login_Click">
+        <Button x:Name="BTN_Login" Content="Login" HorizontalAlignment="Left" Margin="14,384,0,0" VerticalAlignment="Top" Width="69" Click="BTN_Login_Click">
 
             <Button.Resources>
                 <Style TargetType="Border">
@@ -90,23 +90,23 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Label x:Name="LB_Username" Content="Username:" HorizontalAlignment="Left" Margin="9,373,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="LB_Passwort" Content="Passwort:" HorizontalAlignment="Left" Margin="12,414,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="TB_Login" HorizontalAlignment="Left" Margin="16,396,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <Label x:Name="LB_Username" Content="Username:" HorizontalAlignment="Left" Margin="11,399,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LB_Passwort" Content="Passwort:" HorizontalAlignment="Left" Margin="14,440,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TB_Login" HorizontalAlignment="Left" Margin="18,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="TB_Password" HorizontalAlignment="Left" Margin="16,440,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="TB_Password" HorizontalAlignment="Left" Margin="18,466,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button x:Name="BTN_CheckLogin" Content="Login" HorizontalAlignment="Left" Margin="157,440,0,0" VerticalAlignment="Top" Width="69" Click="BTN_CheckLogin_Click">
+        <Button x:Name="BTN_CheckLogin" Content="Login" HorizontalAlignment="Left" Margin="159,466,0,0" VerticalAlignment="Top" Width="69" Click="BTN_CheckLogin_Click">
 
             <Button.Resources>
                 <Style TargetType="Border">
@@ -123,7 +123,7 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button x:Name="BTN_Add" Content="HINZU&#xD;&#xA;FÜGEN" HorizontalAlignment="Left" Margin="33,492,0,0" VerticalAlignment="Top" Height="60" Width="75" Click="BTN_Add_Click" >
+        <Button x:Name="BTN_Add" Content="HINZU&#xD;&#xA;FÜGEN" HorizontalAlignment="Left" Margin="33,516,0,0" VerticalAlignment="Top" Height="60" Width="75" Click="BTN_Add_Click" >
 
             <Button.Resources>
                 <Style TargetType="Border">
@@ -137,7 +137,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="BTN_Remove" Content="LÖSCHEN" HorizontalAlignment="Left" Margin="151,602,0,0" VerticalAlignment="Top" Height="38" Width="74" Click="BTN_Remove_Click" >
+        <Button x:Name="BTN_Remove" Content="LÖSCHEN" HorizontalAlignment="Left" Margin="154,611,0,0" VerticalAlignment="Top" Height="38" Width="74" Click="BTN_Remove_Click" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -183,7 +183,7 @@
 
 
         </ComboBox>
-        <Button x:Name="BTN_Change" Content="BEARBEITEN" HorizontalAlignment="Left" Margin="148,492,0,0" VerticalAlignment="Top" Height="60" Width="75" Click="BTN_Change_Click" >
+        <Button x:Name="BTN_Change" Content="BEARBEITEN" HorizontalAlignment="Left" Margin="148,516,0,0" VerticalAlignment="Top" Height="60" Width="75" Click="BTN_Change_Click" >
 
             <Button.Resources>
                 <Style TargetType="Border">
@@ -197,16 +197,16 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Label x:Name="LB_Remove" Content="Zeile nr: " HorizontalAlignment="Left" Margin="22,588,0,0" VerticalAlignment="Top" Width="82" FontSize="20"/>
-        <TextBox x:Name="TBox_rowRemove" HorizontalAlignment="Left" Margin="105,592,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" FontSize="20"/>
+        <Label x:Name="LB_Remove" Content="Zeile nr: " HorizontalAlignment="Left" Margin="22,612,0,0" VerticalAlignment="Top" Width="82" FontSize="20"/>
+        <TextBox x:Name="TBox_rowRemove" HorizontalAlignment="Left" Margin="105,616,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" FontSize="20"/>
         <Slider x:Name="Slider_Low"  HorizontalAlignment="Left" Margin="-4,292,0,0" VerticalAlignment="Top" Width="120" TickFrequency="10" Maximum="500" SmallChange="50" TickPlacement="TopLeft" LargeChange="10" Cursor="Hand"/>
         <Slider x:Name="Slider_High"  HorizontalAlignment="Left" Margin="126,292,0,0" VerticalAlignment="Top" Width="120" TickFrequency="10" Maximum="2500" SmallChange="50" TickPlacement="TopLeft" LargeChange="25" Minimum="500" Value="2500"/>
-        <Label x:Name="LB_Dubistals" Content="Du bist eingellogt als" HorizontalAlignment="Left" Margin="4,10,0,0" VerticalAlignment="Top" Foreground="#FF908A8A"/>
-        <Label x:Name="LB_UserNameMainWindow" Content="Sebastian Stocki" HorizontalAlignment="Left" Margin="122,10,0,0" VerticalAlignment="Top" Width="111">
+        <Label x:Name="LB_Dubistals" Content="Du bist eingeloggt als:" HorizontalAlignment="Left" Margin="2,321,0,0" VerticalAlignment="Top" Foreground="#FF372F2F" FontSize="15"/>
+        <Label x:Name="LB_UserNameMainWindow" Content="" HorizontalAlignment="Left" Margin="0,349,0,0" VerticalAlignment="Top" Width="196" FontSize="15">
             <Label.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF556954"/>
-                    <GradientStop Color="#FF8B968A" Offset="1"/>
+                    <GradientStop Color="#FF2C312B" Offset="1"/>
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>

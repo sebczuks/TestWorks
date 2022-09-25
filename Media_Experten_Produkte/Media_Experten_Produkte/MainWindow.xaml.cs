@@ -47,6 +47,9 @@ namespace Media_Experten_Produkte
             LB_Remove.Visibility = Visibility.Hidden;
             LB_Dubistals.Visibility = Visibility.Hidden;
             LB_UserNameMainWindow.Visibility = Visibility.Hidden;
+            LB_ID.Visibility = Visibility.Hidden;
+            TBox_SearchID.Visibility = Visibility.Hidden;
+            BTN_SearchbyID.Visibility = Visibility.Hidden;
 
         }
 
@@ -78,6 +81,9 @@ namespace Media_Experten_Produkte
             LB_UserNameMainWindow.Visibility = Visibility.Visible;
             LB_Dubistals.Visibility = Visibility.Visible;
             BTN_Login.Content = "Logout";
+            LB_ID.Visibility = Visibility.Visible;
+            TBox_SearchID.Visibility = Visibility.Visible;
+            BTN_SearchbyID.Visibility = Visibility.Visible;
 
 
 
@@ -96,7 +102,7 @@ namespace Media_Experten_Produkte
 
             InitializeComponent();
             DG_Produkte.ItemsSource = pr.ShowProdukteTableforCustomer();
-            DG_Produkte.FontSize = 18;
+           
 
 
             HideLogin();
@@ -108,7 +114,16 @@ namespace Media_Experten_Produkte
 
         private void BTN_ShowProdukte_Click_1(object sender, RoutedEventArgs e)
         {
-            DG_Produkte.ItemsSource = pr.ShowProdukteTableafterLogin();
+            if (checkLogin.loginOK == false)
+                {
+                DG_Produkte.ItemsSource = pr.ShowProdukteTableforCustomer();
+                DG_Produkte.FontSize = 25;
+                }
+            else
+                {
+                DG_Produkte.ItemsSource = pr.ShowProdukteTableafterLogin();
+                DG_Produkte.FontSize = 18;
+            }
 
         }
 
@@ -135,10 +150,18 @@ namespace Media_Experten_Produkte
 
         private void BTN_Login_Click(object sender, RoutedEventArgs e)
         {
+            if(checkLogin.loginOK == false)
+            { 
             ShowLogin();
-      
-            
-        }
+            }
+            else {
+               checkLogin.loginOK = true;
+                BTN_Login.Content = "Login";
+
+                HideLogin();  }
+
+
+    }
 
     
 
@@ -169,11 +192,14 @@ namespace Media_Experten_Produkte
 
         private void BTN_SearchbyName_Click(object sender, RoutedEventArgs e)
         {
-
+            DG_Produkte.ItemsSource = pr.ShowSearchedResultName(TBox_SearchName.Text);
+            TBox_SearchName.Text = string.Empty;
+            
         }
 
         private void BTN_CheckLogin_Click(object sender, RoutedEventArgs e)
         {
+           
             string login = TB_Login.Text;
             string password = TB_Password.Text;
           //  string password = PBox_password.Text;
@@ -189,8 +215,10 @@ namespace Media_Experten_Produkte
 
            if( loginchecker.CheckLoginandPassword(login, password))
             {
-              ShowifLoginOK(); 
-             
+                ShowifLoginOK();
+                DG_Produkte.ItemsSource = pr.ShowProdukteTableafterLogin();
+                checkLogin.loginOK = true;
+                LB_UserNameMainWindow.Content = checkLoginandPassword.GetUserName(login);
 
             }
             else 

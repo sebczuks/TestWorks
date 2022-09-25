@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Media_Experten_Produkte"
         mc:Ignorable="d"
-        Title="AddWindow" Height="378" Width="450">
+        Title="Hinzufügen" Height="378" Width="450">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF313030" Offset="0"/>
@@ -16,7 +16,7 @@
         <Label x:Name="LB_ID" Content="ID" HorizontalAlignment="Left" Margin="35,29,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label x:Name="LB_NAME" Content="NAME" HorizontalAlignment="Left" Margin="35,71,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label x:Name="LB_Producer" Content="HERSTELLER" HorizontalAlignment="Left" Margin="35,113,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label x:Name="LB_Preis" Content="PREISS" HorizontalAlignment="Left" Margin="35,155,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="LB_Preis" Content="PREIS" HorizontalAlignment="Left" Margin="35,155,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label x:Name="LB_Bestand" Content="BESTAND" HorizontalAlignment="Left" Margin="35,197,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label x:Name="LB_Typ" Content="TYP" HorizontalAlignment="Left" Margin="35,239,0,0" VerticalAlignment="Top" FontSize="20"/>
 
@@ -28,13 +28,6 @@
             </TextBox.Resources>
         </TextBox>
         <TextBox x:Name="TBox_AddName" HorizontalAlignment="Left" Margin="180,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="20">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="3"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
-        <TextBox x:Name="TBox_AddProducer" HorizontalAlignment="Left" Margin="180,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="20">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="3"/>
@@ -55,16 +48,39 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <TextBox x:Name="TBox_AddTyp" HorizontalAlignment="Left" Margin="180,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" FontSize="20">
-            <TextBox.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="3"/>
-                </Style>
-            </TextBox.Resources>
-        </TextBox>
         <Button x:Name="BTN_AddValues" Content="Änderungen &#xD;&#xA;hinzufügen" HorizontalAlignment="Left" Margin="346,278,0,0" VerticalAlignment="Top" Height="50" Width="84" FontStyle="Italic" Click="BTN_AddValues_Click">
-        
+
         </Button>
+        <ComboBox x:Name="CBox_ProducersAdd" FontSize="20" HorizontalAlignment="Left" Margin="180,117,0,0" VerticalAlignment="Top" Width="150">
+            <ComboBoxItem Content="Amica"/>
+            <ComboBoxItem Content="Samsung"/>
+            <ComboBoxItem Content="Siemens"/>
+            <ComboBoxItem Content="Bosch"/>
+            <ComboBoxItem Content="Sony"/>
+            <ComboBoxItem Content="Miele"/>
+            <ComboBoxItem Content="LG"/>
+
+
+
+
+
+
+        </ComboBox>
+        <ComboBox x:Name="CBox_TypesAdd" FontSize="20" HorizontalAlignment="Left" Margin="180,239,0,0" VerticalAlignment="Top" Width="150">
+            <ComboBoxItem Content="Waschmaschine"/>
+            <ComboBoxItem Content="Trockner"/>
+            <ComboBoxItem Content="Fehrseher"/>
+            <ComboBoxItem Content="Staubsauger"/>
+            <ComboBoxItem Content="Radio"/>
+            <ComboBoxItem Content="PC und Konsolen"/>
+            <ComboBoxItem Content="Klein"/>
+
+
+
+
+
+
+        </ComboBox>
 
     </Grid>
 </Window>

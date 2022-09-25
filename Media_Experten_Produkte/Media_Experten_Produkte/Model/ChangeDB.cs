@@ -12,6 +12,48 @@ namespace Media_Experten_Produkte.Model
 {
     public class ChangeDB
     {
+
+
+        static private string _connectionAddress = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True";
+        static SqlConnection _connection = new SqlConnection(_connectionAddress);
+
+        
+        
+        
+        public SqlConnection Connect()
+            {
+                // Verbindung zur DB herstellen
+                try
+                {
+                    _connection.Open();
+                    MessageBox.Show("Connection opend");
+                    
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    
+                }
+                return _connection;
+            }
+        
+        public void CloseDB(SqlConnection con)
+        {
+            try {
+                con.Close();
+                MessageBox.Show("ex.Message");
+                ;
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
+
+
+
+
+
+
+        }
+
+    
         public void Removerow(int id)
         {
             // This Method will completely remove one row orienting on the id
