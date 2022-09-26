@@ -10,8 +10,10 @@ using Microsoft.Data.Sql;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
+
 namespace Media_Experten_Produkte.Model
 {
+   
     public class Produkte
     {
         string ProductID { get; set; }
@@ -21,6 +23,7 @@ namespace Media_Experten_Produkte.Model
         public int ProductCatID { get; set; }
         public string ProductSize { get; set; }
 
+        DBControll controll = new DBControll();
        
 
 
@@ -29,27 +32,20 @@ namespace Media_Experten_Produkte.Model
         {
             //This Method will connect to DB and get DataTable with basic records
 
-            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
-           // string sqlString1 = "SELECT * FROM dbo.Produkte";
+            using SqlConnection con = controll.Connect();
             var sqlStringforCustomer = "SELECT ProduktName AS 'Name' , ProduktTyp  AS 'Typ' , ProduktProducer AS 'Hersteller' , ProduktPreiss AS 'Preis'   FROM dbo.Produkte";
 
 
-            // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
-
             try
             {
-                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
-                con.Open();
-
-                 MessageBox.Show("Liste unserer Produkte - Kunde");
-              //  SqlCommand sqlCommand = new SqlCommand(sqlString1, con);
+                controll.Connect();
+                MessageBox.Show("Liste unserer Produkte - Kunde");
                 SqlCommand sqlCommand2 = new SqlCommand(sqlStringforCustomer, con);
                 sqlCommand2.ExecuteNonQuery();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand2);
                 DataTable dataTable = new DataTable(sqlStringforCustomer);
                 dataAdapter.Fill(dataTable);
                 return dataTable.DefaultView;
-                con.Close();
             }
 
             catch (SqlException ex)
@@ -66,28 +62,33 @@ namespace Media_Experten_Produkte.Model
         {
             //This Method will connect to DB and get DataTable with all records
 
-            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
-            string sqlString1 = "SELECT ProduktID as ID, ProduktName AS 'Produkt Name', ProduktProducer AS 'Hersteller', ProduktPreiss AS 'Produkt Preis' , ProduktTyp  AS 'Produkt Typ', ProduktBestend AS 'Bestand'  FROM dbo.Produkte";
+            using SqlConnection con = controll.Connect();
+          //  string sqlString1 = "SELECT ProduktID as ID, ProduktName AS 'Produkt Name', ProduktProducer AS 'Hersteller', ProduktPreiss AS 'Produkt Preis' , ProduktTyp  AS 'Produkt Typ', ProduktType AS 'Typ Nr', ProduktBestend AS 'Bestand'  FROM dbo.Produkte";
             //var sqlStringforCustomer = "SELECT ProduktName AS 'Produkt Name', ProduktProducer, ProduktPreiss AS 'Produkt Preis' , ProduktTyp  AS 'Produkt Typ'  FROM dbo.Produkte";
-
+            string joinSql = @"SELECT Produkte.ProduktID AS ID, 
+                                      Produkte.ProduktName AS Name, 
+                                      Produkte.ProduktType AS Typ, 
+                                      Produkte.ProduktPreiss AS Preis, 
+                                      Produkte.ProduktProducer AS Hersteller,
+                                      Produkte.ProduktBestend AS Bestand 
+                                      FROM Produkte 
+                                      INNER JOIN Types ON Produkte.ProduktType = Types.TypeID;";
 
             // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
 
             try
             {
                 //SqlConnection sqlConnection = new SqlConnection(_connectionString);
-                con.Open();
+              controll.Connect();
 
                 MessageBox.Show("Liste unserer Produkte");
-                SqlCommand sqlCommand1 = new SqlCommand(sqlString1, con);
-               // SqlCommand sqlCommand2 = new SqlCommand(sqlStringforCustomer, con);
+                SqlCommand sqlCommand1 = new SqlCommand(joinSql, con);
                 sqlCommand1.ExecuteNonQuery();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand1);
-                DataTable dataTable = new DataTable(sqlString1);
+                DataTable dataTable = new DataTable(joinSql);
                
                 dataAdapter.Fill(dataTable);
                 return dataTable.DefaultView;
-                con.Close();
             }
 
             catch (SqlException ex)
@@ -102,26 +103,20 @@ namespace Media_Experten_Produkte.Model
 
         public DataView ShowSearchedResultID(int id)
         {
-            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
-            string sqlString1 = "SELECT * FROM dbo.Produkte Where ProduktID =" + id + ";";
-
-
-            // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
+            using SqlConnection con = controll.Connect();
+            string sqlString1 = "SELECT * FROM dbo.Produkte Where ProduktID = @id;";
 
             try
             {
-                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
-                con.Open();
-
-                // MessageBox.Show("Liste unserer Produkte");
+                controll.Connect();
                 SqlCommand sqlCommand = new SqlCommand(sqlString1, con);
+                sqlCommand.Parameters.AddWithValue("@id", id);
                 sqlCommand.ExecuteNonQuery();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable(sqlString1);
-
                 dataAdapter.Fill(dataTable);
                 return dataTable.DefaultView;
-                con.Close();
+            
             }
 
             catch (SqlException ex)
@@ -135,22 +130,27 @@ namespace Media_Experten_Produkte.Model
 
         public DataView Search(string producer, string type, int low, int high) //
         {
-            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
+
             // This Method will search and display in DataView Data
             //check if not empty
             // connect and enforce sql query 
-
-            string sqlQuery = "SELECT * FROM dbo.Produkte WHERE ProduktProducer = ";
+            using SqlConnection con = controll.Connect();
+          
 
            // string sqlselect = "SELECT  'Produkt Name' , 'Produkt Producer', 'Produkt Preis' , 'Produkt Typ', 'ProduktLieferdatum' FROM dbo.Produkte WHERE 'Produkt Producer' = '" + producer + "' AND 'Produkt Typ' = '" + type + "' AND 'Prpdukt Preis' BETEWEN " + preisLow + "AND" + preisHigh + ";";
-            string SELECT = "SELECT ProduktName AS 'Name', ProduktProducer AS Hersteller , ProduktPreiss AS 'Preis' , ProduktTyp  AS 'Typ'  FROM dbo.Produkte WHERE ProduktPreiss BETWEEN " + low + " AND " + high + " AND  ProduktProducer = '" + producer + "'  AND ProduktTyp = '" + type + "' ;";
+            string SELECT = "SELECT ProduktName AS 'Name', ProduktProducer AS Hersteller , ProduktPreiss AS 'Preis' , ProduktTyp  AS 'Typ'  FROM dbo.Produkte WHERE ProduktPreiss BETWEEN @lowpreis AND @highpreis AND  ProduktProducer = @producer  AND ProduktTyp = @type";
             try
             {
-                //SqlConnection sqlConnection = new SqlConnection(_connectionString);
-                con.Open();
+               
+                controll.Connect();
 
                 // MessageBox.Show("Liste unserer Produkte");
                 SqlCommand sqlCommand = new SqlCommand(SELECT, con);
+                sqlCommand.Parameters.AddWithValue("@producer",producer);
+                sqlCommand.Parameters.AddWithValue("@type", type);
+                sqlCommand.Parameters.AddWithValue("@lowpreis", low);
+                sqlCommand.Parameters.AddWithValue("@highpreis", high);
+
                 sqlCommand.ExecuteNonQuery();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable(SELECT);
@@ -158,11 +158,6 @@ namespace Media_Experten_Produkte.Model
                 dataAdapter.Fill(dataTable);
                 return dataTable.DefaultView;
 
-
-
-
-
-                con.Close();
             }
 
             catch (SqlException ex)
@@ -175,8 +170,10 @@ namespace Media_Experten_Produkte.Model
 
         public DataView ShowSearchedResultName(string name)
         {
-            SqlConnection con = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
-            string sqlString1 = "SELECT ProduktName AS 'Name' , ProduktTyp AS 'Typ' , ProduktProducer AS 'Hersteller' , ProduktPreiss AS 'Preis' FROM dbo.Produkte Where ProduktName = '" + name + "' ;";
+            
+           // SqlConnection conection = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
+            using SqlConnection con = controll.Connect();
+            string sqlString1 = "SELECT ProduktName AS 'Name' , ProduktTyp AS 'Typ' , ProduktProducer AS 'Hersteller' , ProduktPreiss AS 'Preis' FROM dbo.Produkte Where ProduktName = @name;";
 
 
             // string _connectionString = "Data Source=ASUSLAPTOPROG;Initial Catalog=Shop;Integrated Security=True;TrustServerCertificate=True";
@@ -184,17 +181,18 @@ namespace Media_Experten_Produkte.Model
             try
             {
                 //SqlConnection sqlConnection = new SqlConnection(_connectionString);
-                con.Open();
+                controll.Connect();
 
                 // MessageBox.Show("Liste unserer Produkte");
                 SqlCommand sqlCommand = new SqlCommand(sqlString1, con);
+                sqlCommand.Parameters.AddWithValue("@name", name);
                 sqlCommand.ExecuteNonQuery();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(sqlCommand);
                 DataTable dataTable = new DataTable(sqlString1);
 
                 dataAdapter.Fill(dataTable);
                 return dataTable.DefaultView;
-                con.Close();
+                
             }
 
             catch (SqlException ex)

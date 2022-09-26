@@ -66,10 +66,11 @@ namespace Media_Experten_Produkte
 
             TBox_changeName.Text = get.GetValue(id, "ProduktName");
             TBox_changeProducer.Text = get.GetValue(id, "ProduktProducer");
-            TBox_changeTyp.Text = get.GetValue(id, "ProduktTyp");
+            TBox_changeTyp.Text = Convert.ToString(get.GetIntValue(id, "ProduktType"));
+
 
             TBox_changePreis.Text =   get.GetValue(id, "ProduktPreiss");
-            TBox_changeBestand.Text = Convert.ToString(get.GetIntValue(id, "ProduktBestend"));
+            //TBox_changeBestand.Text = Convert.ToString(get.GetIntValue(id, "ProduktBestend"));
 
           
 

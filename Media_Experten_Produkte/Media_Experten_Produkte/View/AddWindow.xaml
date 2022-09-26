@@ -66,14 +66,14 @@
 
 
         </ComboBox>
-        <ComboBox x:Name="CBox_TypesAdd" FontSize="20" HorizontalAlignment="Left" Margin="180,239,0,0" VerticalAlignment="Top" Width="150">
-            <ComboBoxItem Content="Waschmaschine"/>
-            <ComboBoxItem Content="Trockner"/>
-            <ComboBoxItem Content="Fehrseher"/>
-            <ComboBoxItem Content="Staubsauger"/>
-            <ComboBoxItem Content="Radio"/>
-            <ComboBoxItem Content="PC und Konsolen"/>
-            <ComboBoxItem Content="Klein"/>
+        <ComboBox x:Name="CBox_TypesAdd" FontSize="20" HorizontalAlignment="Left" Margin="180,239,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="CBox_TypesAdd_SelectionChanged">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>
+            <ComboBoxItem Content="6"/>
+           
 
 
 

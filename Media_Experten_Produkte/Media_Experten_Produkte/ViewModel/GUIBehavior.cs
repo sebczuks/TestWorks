@@ -8,22 +8,25 @@ using System.Windows;
 
 namespace Media_Experten_Produkte.ViewModel
 {
-
+   
     public class GUIBehavior : MainWindow
     {
+        DBControll controll = new DBControll();
 
 
 
         public int GetIntValue(int id, string name)
         {
-            SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
-            conn.Open();
-            string sqlget = "SELECT " + name + " FROM dbo.Produkte WHERE ProduktID = " + id + ";";
+            using SqlConnection con = controll.Connect();
+            string sqlget = "SELECT "+ name +" FROM dbo.Produkte WHERE ProduktID = " + id +";";
             int get;
-
+            controll.Connect();
 
             // strSQL = "SELECT * FROM mitglieder WHERE mitglieds_nr = @mnr;";
-            SqlCommand cmd = new SqlCommand(sqlget, conn);
+            SqlCommand cmd = new SqlCommand(sqlget, con);
+            //cmd.Parameters.AddWithValue("@name", name);
+            //cmd.Parameters.AddWithValue("@id", id);
+            
 
             // SqlDataReader reader = cmd.ExecuteReader();
             using (var reader = cmd.ExecuteReader())
@@ -31,7 +34,7 @@ namespace Media_Experten_Produkte.ViewModel
                 reader.Read();
                 get = reader.GetInt32(0);
             }
-            conn.Close();
+          
             return get;
 
 
@@ -41,21 +44,25 @@ namespace Media_Experten_Produkte.ViewModel
         public string GetValue(int id, string name)
         {
             // This Method will update T_Box Text on TBox Event
-            SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
 
-            string sqlget = "SELECT " + name + " FROM dbo.Produkte WHERE ProduktID = " + id + ";";
+            using SqlConnection con = controll.Connect();
+            string sqlget = "SELECT @name FROM dbo.Produkte WHERE ProduktID = @id;";
             string get;
+            controll.Connect();
             //  string passwordfromDB;
-            SqlCommand commandget = new SqlCommand(sqlget, conn);
+            SqlCommand commandget = new SqlCommand(sqlget, con);
+           
+            commandget.Parameters.AddWithValue("@name", name);
+            commandget.Parameters.AddWithValue("@id", id);
             //SqlCommand commandgetPassword = new SqlCommand(sqlgetpassword, conn);
-            conn.Open();
+
             using (var reader = commandget.ExecuteReader())
             {
                 reader.Read();
                 get = reader.GetString(0);
             }
 
-            conn.Close();
+       
             return get;
 
 

@@ -13,6 +13,8 @@ namespace Media_Experten_Produkte.Model
         public string login { get; set; }
         public string password { get; set; }
 
+        DBControll controll = new DBControll();
+
 
         public bool LoginVauesCheck(string login, string password)
         {
@@ -52,15 +54,20 @@ namespace Media_Experten_Produkte.Model
 
         public bool CheckLoginandPassword(string login, string password)
         {
-            SqlConnection conn = new SqlConnection("Data Source=ASUSLAPTOPROG;Initial Catalog=Shop2;Integrated Security=True;TrustServerCertificate=True");
+            using SqlConnection con = controll.Connect();
+           
 
             string sqlgetlogin = "SELECT Login FROM dbo.MitarbieterListe WHERE Login = '" + login + "';";
             string sqlgetpassword = "SELECT Password FROM dbo.MitarbieterListe WHERE Login = '" + login + "';";
+
+
             string loginfromDB;
             string passwordfromDB;
-            SqlCommand commandgetLogin = new SqlCommand(sqlgetlogin, conn);
-            SqlCommand commandgetPassword = new SqlCommand(sqlgetpassword, conn);
-            conn.Open();
+            SqlCommand commandgetLogin = new SqlCommand(sqlgetlogin, con);
+            SqlCommand commandgetPassword = new SqlCommand(sqlgetpassword, con);
+            controll.Connect();
+            commandgetLogin.Parameters.AddWithValue("@login", login);
+            commandgetPassword.Parameters.AddWithValue("@login", login);
             using (var reader = commandgetLogin.ExecuteReader())
             {
                 reader.Read();
