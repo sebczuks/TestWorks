@@ -28,17 +28,13 @@ namespace Media_Experten_Produkte.ViewModel
             //cmd.Parameters.AddWithValue("@id", id);
             
 
-            // SqlDataReader reader = cmd.ExecuteReader();
+           
             using (var reader = cmd.ExecuteReader())
             {
                 reader.Read();
                 get = reader.GetInt32(0);
             }
-          
             return get;
-
-
-
         }
 
         public string GetValue(int id, string name)
