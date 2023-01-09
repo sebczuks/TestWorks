@@ -261,7 +261,10 @@ namespace Media_Experten_Produkte
             addWindow.Show();
         }
 
-       
+        private void CBox_Producers_SelectionChanged()
+        {
+
+        }
     }
 }
 
